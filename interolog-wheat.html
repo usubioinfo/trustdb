@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Interactome Submission Page">
+        <meta name="author" content="Raghav Kataria">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/gallery/favicon.ico">
+
+        <!-- App title -->
+        <title>Interactomics - TRustDB</title>
+
+        <!-- Plugins css-->
+        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+
+        <!-- form Uploads -->
+        <link href="assets/plugins/fileuploads/css/dropify.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom box css -->
+        <link href="assets/plugins/custombox/css/custombox.min.css" rel="stylesheet">
+
+        <!-- Switchery css -->
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src="assets/js/modernizr.min.js"></script>
+
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCNJT2KP9D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DCNJT2KP9D');
+        </script>
+
+
+    </head>
+
+
+    <body>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container-fluid pl-5">
+    <div class="row w-100 pl-4">
+
+      <div class="col">
+        <a class="" href="https://bioinfo.usu.edu">
+          <img src='assets/images/kaabil_logo.png' height="70" alt="">
+        </a>
+      </div>
+      <div class="col-5">
+
+      </div>
+      <div class="col-auto">
+          <!-- <a href="index.html"><img src='assets/images/gallery/wheat_fav.png' height="40px"></a> -->
+          <!-- <a href="index.html"><img src='assets/images/gallery/triticum_logo.png' height="75px"></a> -->
+          <a href="https://www.usu.edu/"><img src='assets/images/gallery/usu-logo1.png' height="70px"></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="container-fluid usu-bg pl-5">
+  <div class="row py-3 pl-5">
+    <div class="col-auto pt-2">
+        <a href="index.html" class="rk-nav-item"><i class="zmdi zmdi-home"></i> Home</a>
+    </div>
+
+    <div class="col-auto pt-2">
+        <div class="dropdown">
+            <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="pe-7s-hammer"></i> Tools
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="interolog-wheat.html">Interactomics</a>
+                <a class="dropdown-item" href="searchTrustDB.html">Advanced search module</a>
+                <a class="dropdown-item" href="blast-submittion.html">BLAST search</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-auto pt-2">
+        <div class="dropdown">
+            <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="zmdi zmdi-format-list-bulleted"></i> Features
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="triticumHPI.php">Host-pathogen interactions</a>
+                <div class="dropdown-divider"></div>
+            
+                <h6 class="ml-3" style="color:black"><b>Host</b></h6>
+                <a class="dropdown-item" href="transcriptionFactors.php">Transcription Factors</a>
+                <a class="dropdown-item" href="localizationHost.php">Subcellular Localization Annotations</a>
+                <a class="dropdown-item" href="geneontologyHost.php">Gene Ontology (GO) Term Annotations</a>
+                <a class="dropdown-item" href="domainsHost.php">Functional Domain Mappings (InterPro)</a>
+                <hr>
+            
+                <h6 class="ml-3" style="color:black"><b>Pathogen</b></h6>
+                <a class="dropdown-item" href="ortholog.php"><i>Puccinia</i> species Orthologs</a>
+                <a class="dropdown-item" href="localization.php">Subcellular Localization Annotations</a>
+                <a class="dropdown-item" href="geneontology.php">Gene Ontology (GO) Term Annotations</a>
+                <a class="dropdown-item" href="domains.php">Functional Domain Mappings (InterPro)</a>
+                <a class="dropdown-item" href="effector.php">Effector Proteins</a>
+                <a class="dropdown-item" href="secretory.php">Secretory Proteins</a>
+                <a class="dropdown-item" href="effectors.php">Effector and Secretory Proteins</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-auto pt-2">
+        <a href="genomicInformation.html" class="rk-nav-item"><i class="fa fa-database"></i> Datasets</a>
+    </div>
+
+    <div class="col-auto pt-2">
+        <a href="help.html" class="rk-nav-item"><i class="ion-document-text"></i> User guide </a>
+    </div>
+
+    <div class="col-auto ml-auto">
+      <form role="search" class="form-inline text-right">
+          <select class="form-control select2 mr-2" id="searchSelect">
+              <optgroup label="Puccinia species [Infecting Triticum]">
+                  <option value="pug99">Puccinia graminis Ug99</option>
+                  <option value="pgt21">Puccinia graminis 21-0</option>
+              </optgroup>
+          </select>
+          <input id="proteinTOsearch" placeholder="Search e.g: 'GMQ_00017T0'" class="form-control mr-2" type="text">
+          <a id="proteinSender" href=""><i class="fa fa-search" style="color:rgb(38, 92, 194)"></i></a>
+        </form>
+    </div>
+  </div>
+</nav>
+
+<!-- End Navigation Bar-->
+
+
+
+
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="wrapper">
+            <div class="container">
+                <!-- Modal -->
+            
+
+                <div class="modal fade" id="ppiDbModal" tabindex="-1" role="dialog" aria-labelledby="ppiDbModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">About PPI Databases</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>The International Molecular Exchange Consortium <a target="_blank" href="https://www.imexconsortium.org">(IMEX)</a> had the initiative to cluster the largest public interaction data providers. From those we have selected five (HPIDB, MINT, DIP, BioGRID and IntAct), as we think these are most comprehensive for the studying the interactions, althought these databases can be used for general purposes (any dataset can be used in this service). Additionally, we also implemented PHI-base, and the plant experimental interactions from STRING database. </p>
+                                <hr>
+                                <p>HPIDB is the default database, because it is the only one solely made by host-pathogen interactions. Others include any kind of protein-protein interactions.</p>
+                                <hr>
+                                <p>Summary of the databases version running on this service:</p>
+                                <p><a target="_blank" href="http://hpidb.igbb.msstate.edu/">HPIDB</a> have 69,787 sequences with 389,910 interactions.</p>
+                                <p><a target="_blank" href="https://mint.bio.uniroma2.it/">MINT</a> have 26,344 sequences with 131,695 interactions.</p>
+                                <p><a target="_blank" href="http://dip.mbi.ucla.edu/dip/">DIP</a> have 28,404 sequences with 81,923 interactions.</p>
+                                <p><a target="_blank" href="https://string-db.org/">STRING</a> have 97,483 sequences with 4,944,287 interactions.</p>
+                                <p><a target="_blank" href="https://thebiogrid.org/">BioGRID</a> have 82,751 sequences with 1,565,084 interactions.</p>
+                                <p><a target="_blank" href="https://www.ebi.ac.uk/intact/">IntAct</a> have 121,387 sequences with 1,156,385 interactions.</p>
+                                <p><a target="_blank" href="http://www.phi-base.org/">PHI-base</a> have 6,776 sequences with 15,849 interactions.</p>
+                                <hr>
+                                <p>Please notice that can be overlapping data between databases.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="no-fastaHost" tabindex="-1" role="dialog" aria-labelledby="nofastaHostModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #ff5d48; color: #ffffff;">
+                                <h5 class="modal-title" id="nofastaHostModalLabel" >Error</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Please upload a valid FASTA file or paste a valid sequence in the text area for Host.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="no-fastaPathogen" tabindex="-1" role="dialog" aria-labelledby="nofastaPathogenModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #ff5d48; color: #ffffff;">
+                                <h5 class="modal-title" id="nofastaPathogenModalLabel" >Error</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Please upload a valid FASTA file or paste a valid sequence in the text area for Pathogen.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="no-fastaBoth" tabindex="-1" role="dialog" aria-labelledby="nofastaBothModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #ff5d48; color: #ffffff;">
+                                <h5 class="modal-title" id="nofastaBothModalLabel" >Error</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Please upload a valid FASTA file or paste a valid sequence in the text area for both datasets (Pathogen & Host).</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="wr-all" tabindex="-1" role="dialog" aria-labelledby="wr-allModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #f1b53d; color: #ffffff;">
+                                <h5 class="modal-title" id="wr-emailModalLabel" >Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>There is a problem with the input provided.</p><p id="noEmail">Please check the email (you must provided a valid email).</br></p><p id="noIdentity">Please check your minimum identity percentage (valid number from 1 to 100).</br></p><p id="noCoverage">Please check your minimum coverage percentage (valid number from 1 to 100).</br></p><p id="noEvalue">Please check your evalue (valid number).</br></p> Also you can leave it blank (This will run with default values) to continue with the Interolog prediction service.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="onInterologTask" tabindex="-1" role="dialog" aria-labelledby="onBlastTaskLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" data-animation="fadein" >
+                    <div class="modal-dialog" role="document" style="padding-top: 15%;">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #2b9296; color: #ffffff;">
+                                <h5 class="modal-title" id="onBlastTaskLabel" >Please be patient, your query is being processed.....</h5>
+                            </div>
+                            <div class="modal-body" id="onBlastTaskModalBody">
+                                <img src="assets/images/loading.gif" width="120" style="display: block;margin-left: auto;margin-right: auto;">
+                            </div>
+                            <div class="modal-body" id="onBlastTaskModalBody">
+                                <p id="interologSubmittionScreen">You have succesfully submitted a query to the Interolog prediction service at PredHPI.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-xl-8">
+                        <h4 class="page-title">Host-pathogen Interactomics</h4>
+                    </div>
+                </div>
+
+                <!-- end row --> 
+
+
+                <form id="interologForm" >
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                   
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <h6 class="m-t-20">Host</h6>
+                                            </div>
+                                            <div class="col-5">
+                                                <h6 class="m-t-20">Pathogen</h6>
+                                            </div>
+                                        </div>                           
+                                        <div class="row">
+                                            <div class="col-5" id="triticumIdiv">
+                                                <select class="form-control select2" id="triticumI" style="font-style: italic;">
+                                                    <optgroup label="Triticum proteome [Susceptible to Stem Rust]" style="font-style: italic;">
+                                                        <option value="Taestivum">Triticum aestivum</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            <div class="col-6" id="pucciniaIdiv" >
+                                                <select class="form-control select2" id="pucciniaI" style="font-style: italic;">
+                                                    <optgroup label="Puccinia species  [Infecting Triticum]" style="font-style: italic;">
+                                                        <option value="pug99">Puccinia graminis Ug99</option>
+                                                        <option value="pgt21">Puccinia graminis 21-0</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        
+                                            
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6 >Select Protein-Protein Interaction Databases <i class="zmdi zmdi-info-outline" style="font-size: 25px" data-toggle="modal" data-target="#ppiDbModal"></i></h6>
+                                        <div style="padding-top: 10px; padding-left: 50px;">
+                                            <div class="checkbox">
+                                                <input id="checkboxHPIDB" type="checkbox" checked="">
+                                                <label for="checkboxHPIDB" style="padding-right: 15px;">
+                                                    HPIDB
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkboxMINT" type="checkbox" checked="">
+                                                <label for="checkboxMINT" style="padding-right: 15px;">
+                                                    MINT
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkboxDIP" type="checkbox" checked="">
+                                                <label for="checkboxDIP" style="padding-right: 15px;">
+                                                    DIP
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkboxSTRING" type="checkbox" >
+                                                <label for="checkboxSTRING" style="padding-right: 15px;">
+                                                    STRING
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkboxBioGRID" type="checkbox" >
+                                                <label for="checkboxBioGRID" style="padding-right: 15px;">
+                                                    BioGRID
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkboxIntAct" type="checkbox">
+                                                <label for="checkboxIntAct" style="padding-right: 15px;">
+                                                    IntAct
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkboxPHIbase" type="checkbox" >
+                                                <label for="checkboxPHIbase" style="padding-right: 15px;">
+                                                    PHI-base
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                    </div><!-- end col -->
+                                    <div class="col-md-2">
+                                        <div style="padding-top: 100px; padding-right: 50px">
+                                            <div class="checkbox">
+                                                <input id="checkboxAll" type="checkbox" onclick="checkBoxes()">
+                                                <label for="checkboxAll" >
+                                                    ALL
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 col-xl-6 m-t-sm-40">
+                                        <h6 >Alignment filtering options</h6>
+                                        <h6>Host</h6>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                                <div class="form-group">
+                                                    <label>E-value</label>
+                                                    <input class="form-control"  placeholder="1e-10" type="text" id="evalueA">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                                <div class="form-group">
+                                                    <label>Identity (%)</label>
+                                                    <input class="form-control" id="tfIdentityA" required="" type="text range" min="1" max="100" placeholder="80" >
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                                <div class="form-group">
+                                                    <label>Coverage (%)</label>
+                                                    <input class="form-control" id="tfCovA" required="" type="text range" min="1" max="100" placeholder="50" >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h6>Pathogen</h6>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                                <div class="form-group">
+                                                    <label>E-value</label>
+                                                    <input class="form-control"  placeholder="1e-10" type="text" id="evalueB">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                                <div class="form-group">
+                                                    <label>Identity (%)</label>
+                                                    <input class="form-control" id="tfIdentityB" required="" type="text range" min="1" max="100" placeholder="50" >
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                                <div class="form-group">
+                                                    <label>Coverage (%)</label>
+                                                    <input class="form-control" id="tfCovB" required="" type="text range" min="1" max="100" placeholder="30" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col -->
+
+                                </div><!-- end row -->
+                            </div>
+                        </div><!-- end col -->
+                    </div>
+
+                    <div class="card-box">
+                        <div class="form-group">
+                            <label >Email address (Optional)</label>
+                            <input name="email" placeholder="Enter email" class="form-control" id="emailAddress" type="email" >
+                        </div>
+                        <div class="button-list">
+                            <button class="btn btn-primary waves-effect waves-light btn-lg" type="reset" id="resetInterologForm">Reset</button>
+                            <button class="btn btn-success waves-effect waves-light btn-lg" type="button" id="runInterolog" >Run</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- end row -->
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+
+            <!-- Footer -->
+            <footer class="footer">
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://bioinfo.usu.edu"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+            </footer>
+            <!-- End Footer -->
+
+
+        </div> <!-- End wrapper -->
+
+
+
+
+        
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Tether for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+
+        <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script src="assets/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+
+
+        <!-- file uploads js -->
+        <script src="assets/plugins/fileuploads/js/dropify.min.js"></script>
+
+        <!-- Modal-Effect -->
+        <script src="assets/plugins/custombox/js/custombox.min.js"></script>
+        <script src="assets/plugins/custombox/js/legacy.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+        <script type="text/javascript">
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong appended.'
+                }
+            });
+        </script>
+
+        
+
+
+        <script>
+            //document.getElementById("triticumI").style.display = "none";
+            //TODO DOCUMENTATION
+
+            $("#proteinTOsearch").on('input', function() {
+                var proteinName = $(this).val();
+
+                if($.trim(proteinName)!=""){
+                    $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim(proteinName)+"&species="+$('select#searchSelect').val());
+                }
+            });
+
+            $("#searchSelect").change(function() {
+                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim($('input#proteinTOsearch').val())+"&species="+$(this).val());
+            });
+
+
+
+            function checkBoxes(){
+                var isAllselected = document.getElementById("checkboxAll").checked;
+                if(isAllselected) {
+                    document.getElementById("checkboxHPIDB").checked = true;
+                    document.getElementById("checkboxDIP").checked = true;
+                    document.getElementById("checkboxMINT").checked = true;
+                    document.getElementById("checkboxBioGRID").checked = true;
+                    document.getElementById("checkboxIntAct").checked = true;
+                    document.getElementById("checkboxSTRING").checked = true;
+                    document.getElementById("checkboxPHIbase").checked = true;
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+
+                }   else {
+                    document.getElementById("checkboxHPIDB").checked = false;
+                    document.getElementById("checkboxDIP").checked = false;
+                    document.getElementById("checkboxMINT").checked = false;
+                    document.getElementById("checkboxBioGRID").checked = false;
+                    document.getElementById("checkboxIntAct").checked = false;
+                    document.getElementById("checkboxSTRING").checked = false;
+                    document.getElementById("checkboxPHIbase").checked = false;
+
+                    document.getElementById("runInterolog").disabled= "true";
+                }           
+
+            }
+
+
+            $("#runInterolog").click(function() {
+                var validEmail = 0;
+
+                var validEvalueA = 0;
+                var validIdentityA = 0;
+                var validCoverageA = 0;
+                var validEvalueB = 0;
+                var validIdentityB = 0;
+                var validCoverageB = 0;
+
+                var identityA = $('input#tfIdentityA').val();
+                var coverageA = $('input#tfCovA').val();
+                var evalueA = $('input#evalueA').val();
+
+                var identityB = $('input#tfIdentityB').val();
+                var coverageB = $('input#tfCovB').val();
+                var evalueB = $('input#evalueB').val();
+
+                var isHPIDBselected = document.getElementById("checkboxHPIDB").checked;
+                var isDIPselected = document.getElementById("checkboxDIP").checked;
+                var isMINTselected = document.getElementById("checkboxMINT").checked;
+                var isBioGRIDselected = document.getElementById("checkboxBioGRID").checked;
+                var isIntActselected = document.getElementById("checkboxIntAct").checked;
+                var isSTRINGselected = document.getElementById("checkboxSTRING").checked;
+                var isPHIbaseselected = document.getElementById("checkboxPHIbase").checked;
+               
+		        var speciesA1 = $('select#triticumI').val();
+		        var speciesB1 = $('select#pucciniaI').val();
+		
+                var emailAddress = $('input#emailAddress').val();
+                var regexEmail = /\S+@\S+\.\S+/
+
+                if(emailAddress.length > 0){
+                    if(regexEmail.test(emailAddress.trim())){
+                        validEmail = 1;
+                    } else {
+                        //console.log("Email testing failed, not using email");
+                        validEmail = 2;
+                        emailAddress = "noemail";
+                    }
+                } else {
+                    emailAddress = "noemail";
+                    //console.log("Not using email");
+                }
+
+                if(identityA.length > 0){
+                    if(!isNaN(identityA)){
+                        validIdentityA = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        identityA = '80';
+                        validIdentityA = 2;
+                    }
+                } else {
+                    identityA = '80';
+                    //console.log("Using default evalue");
+                }
+
+                if(coverageA.length > 0){
+                    if(!isNaN(coverageA)){
+                        validCoverageA = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        coverageA = '50';
+                        validCoverageA = 2;
+                    }
+                } else {
+                    coverageA = '50';
+                    //console.log("Using default evalue");
+                }
+
+                if(evalueA.length > 0){
+                    if(!isNaN(evalueA)){
+                        validEvalueA = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        evalueA = '1e-10';
+                        validEvalueA = 2;
+                    }
+                } else {
+                    evalueA = '1e-10';
+                    //console.log("Using default evalue");
+                }           
+
+                /////////////////////////////
+
+                if(identityB.length > 0){
+                    if(!isNaN(identityB)){
+                        validIdentityB = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        identityB = '50';
+                        validIdentityB = 2;
+                    }
+                } else {
+                    identityB = '50';
+                    //console.log("Using default evalue");
+                }
+
+                if(coverageB.length > 0){
+                    if(!isNaN(coverageB)){
+                        validCoverageB = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        coverageB = '30';
+                        validCoverageB = 2;
+                    }
+                } else {
+                    coverageB = '30';
+                    //console.log("Using default evalue");
+                }
+
+                if(evalueB.length > 0){
+                    if(!isNaN(evalueB)){
+                        validEvalueB = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        evalueB = '1e-10';
+                        validEvalueB = 2;
+                    }
+                } else {
+                    evalueB = '1e-10';
+                    //console.log("Using default evalue");
+                }   
+
+                database = "";
+
+                if(isHPIDBselected){
+                        database += "hpidb_";
+                }
+                if(isDIPselected){
+                        database += "dipdb_";
+                }
+                if(isMINTselected){
+                        database += "mintdb_";
+                }
+                if(isBioGRIDselected){
+                        database += "biogriddb_";
+                }
+                if(isIntActselected){
+                        database += "intactdb_";
+                }
+                if(isSTRINGselected){
+                        database += "stringdb_";
+                }
+                if(isPHIbaseselected){
+                        database += "phibasedb_";
+                }
+
+                database = database.substring(0,database.length-1)
+
+
+                var formData = new FormData();
+
+                var namer = new Date().valueOf();
+                formData.append("namer", namer);
+
+                formData.append("speciesA1", speciesA1);
+                //formData.append("speciesA2", speciesA2);
+                formData.append("speciesB1", speciesB1);
+                //formData.append("comparisonType", type);
+
+                formData.append("coverageA", coverageA);
+                formData.append("identityA", identityA);
+                formData.append("evalueA", evalueA);
+                formData.append("coverageB", coverageB);
+                formData.append("identityB", identityB);
+                formData.append("evalueB", evalueB);
+                formData.append("database", database);
+
+
+                if(validEmail==2 || validEvalueA == 2 || validIdentityA == 2 || validCoverageA == 2 || validEvalueB == 2 || validIdentityB == 2 || validCoverageB == 2){
+                    $('#noEmail').hide();
+                    $('#noIdentity').hide();
+                    $('#noCoverage').hide();
+                    $('#noEvalue').hide();
+
+                    if(validEmail==2){
+                        $('#noEmail').show();
+                    }
+
+                    if(validEvalueA==2 || validEvalueB == 2){
+                        $('#noEvalue').show();            
+                    }
+
+                    if(validIdentityA==2 || validIdentityB == 2){
+                        $('#noIdentity').show();
+                    }
+
+                    if(validCoverage==2 || validCoverageB == 2){
+                       $('#noCoverage').show(); 
+                    }
+
+                    $('#wr-all').modal();
+                } else {
+                    
+                    formData.append("emailAddress", emailAddress);
+                    
+                    var validationRequest = new XMLHttpRequest();
+                    var proceed = false;
+                    document.getElementById("interologSubmittionScreen").innerHTML= "You have succesfully submitted a query to the Host-pathogen Interactomics service at TRustDB. Your results will be avaliable at https://bioinfo.usu.edu/trustdb/interactome-results.php?result="+namer;
+
+                    var request = new XMLHttpRequest();
+                    request.open("POST", "https://bioinfo.usu.edu/trustdb/interactome-task.php",true);
+                    $('#onInterologTask').modal("show");
+                    request.onload = function () {
+                        if (request.readyState === request.DONE) {
+                            if (request.status === 200) {
+                                resultTask = request.response;
+                                var resultUrl = "https://bioinfo.usu.edu/trustdb/interactome-results.php?result=" + resultTask;
+                                window.location.href = resultUrl;
+                                //console.log(request.responseText);
+                            }
+                        }
+                    };
+                    request.send(formData);
+                }
+           
+            });
+
+            $("#resetInterologForm").click(function() {
+                var drEventHost = $('#fileSqHost').dropify();
+                drEventHost = drEventHost.data('dropify');
+                drEventHost.resetPreview();
+                drEventHost.clearElement();
+
+                var drEventPathogen = $('#fileSqPathogen').dropify();
+                drEventPathogen = drEventPathogen.data('dropify');
+                drEventPathogen.resetPreview();
+                drEventPathogen.clearElement();
+
+                $('input#evalueA').val("");
+                $('input#tfIdentityA').val("");
+                $('input#tfCovA').val("");
+
+                $('input#evalueB').val("");
+                $('input#tfIdentityB').val("");
+                $('input#tfCovB').val("");
+
+                $('input#emailAddress').val("");
+
+                document.getElementById("runInterolog").disabled= null;
+
+                document.getElementById("checkboxHPIDB").disabled= null;
+                document.getElementById("checkboxMINT").disabled= null;
+                document.getElementById("checkboxDIP").disabled= null;
+                document.getElementById("checkboxBioGRID").disabled= null;
+                document.getElementById("checkboxIntAct").disabled= null;
+                document.getElementById("checkboxSTRING").disabled= null;
+                document.getElementById("checkboxPHIbase").disabled= null;
+                document.getElementById("emailAddress").disabled= null;
+                document.getElementById("evalueA").disabled= null;
+                document.getElementById("tfIdentityA").disabled= null;
+                document.getElementById("tfCovA").disabled= null;
+                document.getElementById("evalueB").disabled= null;
+                document.getElementById("tfIdentityB").disabled= null;
+                document.getElementById("tfCovB").disabled= null;
+
+                document.getElementById("checkboxHPIDB").checked = true;
+                document.getElementById("checkboxMINT").checked = false;
+                document.getElementById("checkboxDIP").checked = false;
+                document.getElementById("checkboxBioGRID").checked = false;
+                document.getElementById("checkboxIntAct").checked = false;
+                document.getElementById("checkboxSTRING").checked = false;
+                document.getElementById("checkboxPHIbase").checked = false;
+
+
+                //console.log("reset?");
+            });
+
+            $("#checkboxHPIDB").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxMINT").checked == false &&
+                    document.getElementById("checkboxDIP").checked == false &&
+                    document.getElementById("checkboxBioGRID").checked == false &&
+                    document.getElementById("checkboxSTRING").checked == false &&
+                    document.getElementById("checkboxPHIbase").checked == false &&
+                    document.getElementById("checkboxIntAct").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }    
+            });
+
+            $("#checkboxMINT").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxHPIDB").checked == false &&
+                    document.getElementById("checkboxDIP").checked == false &&
+                    document.getElementById("checkboxBioGRID").checked == false &&
+                    document.getElementById("checkboxSTRING").checked == false &&
+                    document.getElementById("checkboxPHIbase").checked == false &&
+                    document.getElementById("checkboxIntAct").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }
+            });
+
+            $("#checkboxDIP").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxMINT").checked == false &&
+                    document.getElementById("checkboxHPIDB").checked == false &&
+                    document.getElementById("checkboxBioGRID").checked == false &&
+                    document.getElementById("checkboxSTRING").checked == false &&
+                    document.getElementById("checkboxPHIbase").checked == false &&
+                    document.getElementById("checkboxIntAct").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }         
+            });
+
+            $("#checkboxBioGRID").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxMINT").checked == false &&
+                    document.getElementById("checkboxDIP").checked == false &&
+                    document.getElementById("checkboxHPIDB").checked == false &&
+                    document.getElementById("checkboxSTRING").checked == false &&
+                    document.getElementById("checkboxPHIbase").checked == false &&
+                    document.getElementById("checkboxIntAct").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }               
+            });
+
+            $("#checkboxIntAct").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxMINT").checked == false &&
+                    document.getElementById("checkboxDIP").checked == false &&
+                    document.getElementById("checkboxBioGRID").checked == false &&
+                    document.getElementById("checkboxSTRING").checked == false &&
+                    document.getElementById("checkboxPHIbase").checked == false &&
+                    document.getElementById("checkboxHPIDB").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }               
+            });
+
+            $("#checkboxPHIbase").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxMINT").checked == false &&
+                    document.getElementById("checkboxDIP").checked == false &&
+                    document.getElementById("checkboxBioGRID").checked == false &&
+                    document.getElementById("checkboxSTRING").checked == false &&
+                    document.getElementById("checkboxIntAct").checked == false &&
+                    document.getElementById("checkboxHPIDB").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }               
+            });
+
+            $("#checkboxSTRING").change(function() {
+                if ($(this).is(':checked')) {
+
+                    if(document.getElementById("runInterolog").disabled){
+                        document.getElementById("runInterolog").disabled= null;
+                    }
+                        //console.log("unchecked database");
+                } else if(document.getElementById("checkboxMINT").checked == false &&
+                    document.getElementById("checkboxDIP").checked == false &&
+                    document.getElementById("checkboxBioGRID").checked == false &&
+                    document.getElementById("checkboxIntAct").checked == false &&
+                    document.getElementById("checkboxPHIbase").checked == false &&
+                    document.getElementById("checkboxHPIDB").checked == false){
+                        document.getElementById("runInterolog").disabled= "true";
+                }               
+            });
+
+
+            
+
+        </script>
+
+        
+
+    </body>
+</html>

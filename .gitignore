@@ -1,0 +1,11 @@
+BlastDB
+Interolog
+ProteomesFASTA
+R_Access
+tmp
+*.fasta
+config.php
+config1.php
+orthologs
+weconet_try
+faSomeRecords

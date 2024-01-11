@@ -1,0 +1,30 @@
+.rk-nav-item {
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+  font-size: 120%;
+  color: white;
+}
+
+.rk-nav-item:hover {
+  color: #e0983a;
+}
+
+.usu-bg {
+  background: #356273;
+}
+
+.subtext {
+  font-size: 55%;
+}
+
+.rk-img {
+  border-radius: 8px;
+}
+
+.rk-img-border-center {
+  border: 1px solid rgb(194, 194, 194);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

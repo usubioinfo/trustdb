@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Help Page for TRustDB database.">
+        <meta name="author" content="Raghav Kataria">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/gallery/favicon.ico">
+
+        <!-- App title -->
+        <title>TRustDB</title>
+
+
+        <!-- Switchery css -->
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src="assets/js/modernizr.min.js"></script>
+
+        <!-- External link indicators -->
+        <link href="assets/fa/css/all.min.css" rel="stylesheet" type="text/css" />
+
+        <style type="text/css">
+            p{
+                font-size: 16px;
+                text-align: justify;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+        </style>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCNJT2KP9D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DCNJT2KP9D');
+        </script>
+
+
+    </head>
+
+
+    <body>
+
+<!-- Navigation Bar-->
+    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  		  <div class="container-fluid pl-5">
+            <div class="row w-100 pl-4">
+
+              <div class="col">
+                <a class="" href="https://bioinfo.usu.edu">
+                  <img src='assets/images/kaabil_logo.png' height="70" alt="">
+                </a>
+              </div>
+              <div class="col-5">
+
+              </div>
+              <div class="col-auto">
+                  <!-- <a href="index.html"><img src='assets/images/gallery/favicon.ico' height="40px"></a> -->
+                  <!-- <a href="index.html"><img src='assets/images/gallery/alfalfa_logo.png' height="75px"></a> -->
+                  <a href="https://www.usu.edu/"><img src='assets/images/gallery/usu-logo1.png' height="70px"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="container-fluid usu-bg pl-5">
+          <div class="row py-3 pl-5">
+            <div class="col-auto pt-2">
+                <a href="index.html" class="rk-nav-item"><i class="zmdi zmdi-home"></i> Home</a>
+            </div>
+
+            <div class="col-auto pt-2">
+                <div class="dropdown">
+                    <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="pe-7s-hammer"></i> Tools
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="interolog-wheat.html">Interactomics</a>
+                        <a class="dropdown-item" href="searchTrustDB.html">Advanced search module</a>
+                        <a class="dropdown-item" href="blast-submittion.html">BLAST search</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-auto pt-2">
+                <div class="dropdown">
+                    <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="zmdi zmdi-format-list-bulleted"></i> Features
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="triticumHPI.php">Host-pathogen interactions</a>
+                        <div class="dropdown-divider"></div>
+                    
+                        <h6 class="ml-3" style="color:black"><b>Host</b></h6>
+                        <a class="dropdown-item" href="transcriptionFactors.php">Transcription Factors</a>
+                        <a class="dropdown-item" href="localizationHost.php">Subcellular Localization Annotations</a>
+                        <a class="dropdown-item" href="geneontologyHost.php">Gene Ontology (GO) Term Annotations</a>
+                        <a class="dropdown-item" href="domainsHost.php">Functional Domain Mappings (InterPro)</a>
+                        <hr>
+                    
+                        <h6 class="ml-3" style="color:black"><b>Pathogen</b></h6>
+                        <a class="dropdown-item" href="ortholog.php"><i>Puccinia</i> species Orthologs</a>
+                        <a class="dropdown-item" href="localization.php">Subcellular Localization Annotations</a>
+                        <a class="dropdown-item" href="geneontology.php">Gene Ontology (GO) Term Annotations</a>
+                        <a class="dropdown-item" href="domains.php">Functional Domain Mappings (InterPro)</a>
+                        <a class="dropdown-item" href="effector.php">Effector Proteins</a>
+                        <a class="dropdown-item" href="secretory.php">Secretory Proteins</a>
+                        <a class="dropdown-item" href="effectors.php">Effector and Secretory Proteins</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-auto pt-2">
+                <a href="genomicInformation.html" class="rk-nav-item"><i class="fa fa-database"></i> Datasets</a>
+            </div>
+
+            <div class="col-auto pt-2">
+                <a href="help.html" class="rk-nav-item"><i class="ion-document-text"></i> User guide </a>
+            </div>
+
+            <div class="col-auto ml-auto">
+              <form role="search" class="form-inline text-right">
+                  <select class="form-control select2 mr-2" id="searchSelect">
+                        <optgroup label="Puccinia species [Infecting Triticum]">
+                            <option value="pug99">Puccinia graminis Ug99</option>
+                            <option value="pgt21">Puccinia graminis 21-0</option>
+                    </optgroup>
+                  </select>
+                  <input id="proteinTOsearch" placeholder="Search e.g: 'GMQ_00017T0'" class="form-control mr-2" type="text">
+                  <a id="proteinSender" href=""><i class="fa fa-search" style="color:rgb(197, 223, 81)"></i></a>
+                </form>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navigation Bar-->
+
+
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Title -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="card m-b-20 card-body" style="padding-left: 5%; padding-right: 5%;padding-top: 4%">
+                    <h2 align="Center"><u> Guide to browse TRustDB </u></h2>
+                    <p> Help section of <a href="index.html">TRustDB <sup><i class="fas fa-external-link-alt"></i></sup></a> will guide you how to navigate through the database. If you have any questions that are not covered on this page, please send an email to <u><a href= "mailto:raghav.kataria@usu.edu"> Raghav Kataria <sup><i class="fas fa-envelope" style='font-size:15px'></i></sup></a></u></p>
+
+                    <hr style="height:1px;border-width:1px;background-color:rgb(88, 86, 86)">
+
+                    <h6><b><u> Introduction </b></u></h6>
+                    <p>Wheat (<i>Triticum aestivum</i>), the most widely cultivated crop in the world, and ranks 3rd in terms of global production. In the recent years, the occurence of stem rust in wheat has affected the grain yield and quality of the crop to a great extent, thus proving to be a major threat to the agriculture. The disease is caused by two fungal pathogens, <i>Puccinia graminis</i> 21-0 and <i>Puccinia graminis</i> Ug99. This database has been implemented to provide the functional annotation of the proteins of <i>Puccinia</i> species, along with the "Host-pathogen interactomics" tool, a platform to compare the predicted interactome of host-pathogen system.</p>
+
+                    
+                    <hr style="height:1px;border-width:1px;background-color:rgb(88, 86, 86)">
+
+                    <!-- <h6><b><u> TRustDB Features </b></u></h6> -->
+                    <h4 align="Center"><b><u> TRustDB Features </u></b></h4>
+
+                    <p> Data collected from the literature or resulted from the annotation pipeline of TRustDB is presented in seven search modules. In five of those modules, <i>Puccinia</i> protein annotation can be retrieved (<i>Puccinia</i> orthologs, Subcellular Localization Annotation, Gene Ontology (GO) Term Annotation, Functional Domain Mappings (InterPro), Effector and secretory proteins). In addition, the module "Host-pathogen interactions" is available to gather interactions concerning those <i>Triticum</i> proteins that were found to be related with Common Bunt disease on the basis of interolog-based computational approach. The module data will be displayed according to the dataset selected.
+                    
+                    <br>
+                    <br>
+                    
+                    <b><u>Note</u>: Every feature page has an information icon <i class="zmdi zmdi-info-outline" style="font-size: 20px"></i> that gives a brief information about the annotaions available on that particular page of the database. </b>
+
+                    </p>
+
+                    <h6 style="font-size: 16px;"> Examples</h6>
+
+                    <p><b>(a)</b> Fetch the functional domains of <i>Puccinia</i> species proteins. </p>
+                    <img src="assets/images/gallery/domains.png" width="1200px" class="rk-img-border-center">
+                    <br>
+                    <hr>
+
+                    <p><b>(b)</b> Get the Orthologs of <i>Pgt</i> Ug99 and <i>Pgt</i> 21-0. </p>
+                    <img src="assets/images/gallery/orthologs.png" width="1200px" class="rk-img-border-center">
+                    <br>
+                    <hr>
+
+                    <p><b>(c)</b> Obtain the extracellular proteins of <i>Puccinia</i> species proteins. </p>
+                    <img src="assets/images/gallery/localizations.png" width="900px" class="rk-img-border-center">
+                    <br>
+                    <hr>
+
+                    <p><b>(d)</b> Retrieve the effector and secretory proteins of <i>Puccinia</i> species.</p>
+                    <img src="assets/images/gallery/effectors.png" width="1200px" class="rk-img-border-center">
+                    <br>
+
+                    <hr style="height:1px;border-width:1px;background-color:rgb(88, 86, 86)">
+                    <br>
+                    <br>
+
+                    <h4 align="Center"><b><u> Tools implemented on TRustDB </u></b></h4>
+                    <h6><b><u> Host-pathogen interactomics module </b></u></h6>
+                    <p>With Interactomics tool, a user can find the interactions between host (<i>Triticum aestivum</i>) and pathogens (<i>Pgt</i> Ug99 & <i>Pgt</i> 21-0). Other options for the user in this module include selecting which protein-protein database will be used as a template in the prediction process, or to define BLASTp alignment filters to determine homolog proteins.</p>
+
+                    <img src="assets/images/gallery/interactomics.png" width="1200px" class="rk-img-border-center">
+                    <br>
+
+                    <hr>
+
+                    <p> When a job is submitted it will be assigned to a unique identifier that user can access to check the status of the job (queried, running or done). After the job is completed it will display the results in an enriched table with the option to sort the content by column or to be filtered by keyword; result table can be downloaded in excel or pdf format, or copy as clipboard. Users also can provide an email address to receive a notification when the job completes.</p>
+
+                    <img src="assets/images/gallery/interactomics_result.png" width="1200px" class="rk-img-border-center">
+                    <br>
+                    
+                    <hr>
+
+                    <p> TRustDB provides a network visualization platform, implemented using SigmaJS. This plugin was specially chosen given its performance at displaying large networks. From the host-pathogen network visualization, a user can visualize a set of traits for each node (species, description, degree), and also can easily identify hub nodes (nodes with a higher number of edges). This is useful, as hub nodes have been found crucial in infectious disease pathways. A user is not limited to the network analysis that is provided through our database, the resulted network can be further examined in any network analyzer that could handle JSON or tabular network files.</p>
+
+                    <img src="assets/images/gallery/network.png" width="1200px" class="rk-img-border-center">
+                    <br>
+
+                    <hr style="height:1px;border-width:1px;background-color:rgb(88, 86, 86)">                    
+
+                    <h6><b><u> Advanced search module </u></b></h6>
+
+                    <p> This tool provides an advanced search module that can be used to search for proteins that fulfill a selected filtering criterion, means that for a given keyword plus a set of filtering parameters, this module will look up for any record that match. This search module is comprehensive and will look for protein annotations, GO terms, experiment descriptions and many others that would match to the provided keyword. Additionally, a basic option to perform a quick search of a protein accession is available at all the pages of TRustDB, and both the advanced and the basic search will display the complete information that can be obtained from our database records.</p>
+
+                    <img src="assets/images/gallery/advanced_search1.png" width="1200px" class="rk-img-border-center">
+                    <br>
+
+                    <!-- <p> After the search is done, it will display a table with all the records that matched the selected filtering criterion.</p>
+
+                    <img src="assets/images/gallery/advanced_search2.png" width="1200px" >
+                    <br>
+
+                    <p> If click at one of the accessions links it will redirect the user to a new page in which is displayed the complete information that can be obtained from our database records, including functional domain annotation, GO terms, subcellular localization, protein length, locus, etc.</p>
+
+
+                    <img src="assets/images/gallery/advanced_search3.png" width="1200px" >
+                    <br> -->
+                    <!--<img src="assets/images/gallery/Figure4c2.png" width="1200px" >
+                    <br>
+                    <img src="assets/images/gallery/Figure4c3.png" width="1200px" >
+                    <br>-->
+
+                    <hr style="height:1px;border-width:1px;background-color:rgb(88, 86, 86)">
+
+                    <h6><b><u> BLAST server </u></b></h6>
+
+                    <p> BLAST was implemented locally in our server to provide to the user the functionality of homology sequence search. In addition to the proteome datasets, a user can select to query its sequences against all the proteomes (default option). User can upload either a nucleotide or amino acid sequence, and the system will automatically detect the specific program (BLASTp or BLASTx) to be performed.</p>
+
+
+                    <img src="assets/images/gallery/BLAST_search.png" width="1200px" class="rk-img-border-center">
+                    <br>
+                    <hr>
+
+                    <p> Result page provides a summarized version, whereby the user can download the alignments in tabular or standard alignment format. Also, there is a more detailed option in which the alignments are visualized in an enriched mode.</p>
+
+                    <h6 style="font-size: 17px;"> Summarized results:</h6>
+
+
+                    <img src="assets/images/gallery/BLAST_results1.png" width="1200px" class="rk-img-border-center">
+                    <br>
+                    <hr>
+
+                    <h6 style="font-size: 17px;"> Detailed results:</h6>
+                    <img src="assets/images/gallery/BLAST_results2.png" width="1200px" class="rk-img-border-center">
+                    <br>
+
+                    <div style="padding-top: 100px"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                </div>
+                <!-- end row -->
+
+
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+
+            <!-- Footer -->
+            <footer class="footer">
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://bioinfo.usu.edu"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+            </footer>
+            <!-- End Footer -->
+
+
+
+
+
+        </div> <!-- End wrapper -->
+
+
+
+
+
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Tether for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+
+        <!-- Counter Up  -->
+        <script src="assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+
+
+
+
+        <script type="text/javascript">
+        $("#proteinTOsearch").on('input', function() {
+            var proteinName = $(this).val();
+
+            if($.trim(proteinName)!=""){
+                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim(proteinName)+"&species="+$('select#searchSelect').val());
+            }
+        });
+
+
+        $("#searchSelect").change(function() {
+            $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim($('input#proteinTOsearch').val())+"&species="+$(this).val());
+        });
+
+        </script>
+
+
+    </body>
+</html>

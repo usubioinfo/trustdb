@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="TRustDB: Protein-protein interaction Database for Stem Rust disease in Tritucm aestivum (Wheat).">
+        <meta name="author" content="Raghav Kataria">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/gallery/favicon.ico">
+
+        <!-- App title -->
+        <title>TRustDB</title>
+
+        <!-- Switchery css -->
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src="assets/js/modernizr.min.js"></script>
+
+
+        <style>
+            ul li {
+                margin: 5px;
+                display: inline-block;
+            }
+            ul li a img {
+                width: 200px;
+                height: 200px;
+                display: block;
+            }
+            ul li a:hover img {
+                transform: scale(1.75);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCNJT2KP9D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DCNJT2KP9D');
+        </script>
+
+
+    </head>
+
+    <body>
+
+
+
+<!-- Navigation Bar-->
+    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  		  <div class="container-fluid pl-5">
+            <div class="row w-100 pl-4">
+
+              <div class="col">
+                <a class="" href="https://bioinfo.usu.edu">
+                  <img src='assets/images/kaabil_logo.png' height="70" alt="">
+                </a>
+              </div>
+              <div class="col-5">
+
+              </div>
+              <div class="col-auto">
+                  <a href="https://www.usu.edu/"><img src='assets/images/gallery/usu-logo1.png' height="70px"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="container-fluid usu-bg pl-5">
+          <div class="row py-3 pl-5">
+            <div class="col-auto pt-2">
+                <a href="index.html" class="rk-nav-item"><i class="zmdi zmdi-home"></i> Home</a>
+            </div>
+
+            <div class="col-auto pt-2">
+                <div class="dropdown">
+                    <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="pe-7s-hammer"></i> Tools
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="interolog-wheat.html">Interactomics</a>
+                        <a class="dropdown-item" href="searchTrustDB.html">Advanced search module</a>
+                        <a class="dropdown-item" href="blast-submittion.html">BLAST search</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-auto pt-2">
+                <div class="dropdown">
+                    <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="zmdi zmdi-format-list-bulleted"></i> Features
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="triticumHPI.php">Host-pathogen interactions</a>
+                        <div class="dropdown-divider"></div>
+                    
+                        <h6 class="ml-3" style="color:black"><b>Host</b></h6>
+                        <a class="dropdown-item" href="transcriptionFactors.php">Transcription Factors</a>
+                        <a class="dropdown-item" href="localizationHost.php">Subcellular Localization Annotations</a>
+                        <a class="dropdown-item" href="geneontologyHost.php">Gene Ontology (GO) Term Annotations</a>
+                        <a class="dropdown-item" href="domainsHost.php">Functional Domain Mappings (InterPro)</a>
+                        <hr>
+                    
+                        <h6 class="ml-3" style="color:black"><b>Pathogen</b></h6>
+                        <a class="dropdown-item" href="ortholog.php"><i>Puccinia</i> species Orthologs</a>
+                        <a class="dropdown-item" href="localization.php">Subcellular Localization Annotations</a>
+                        <a class="dropdown-item" href="geneontology.php">Gene Ontology (GO) Term Annotations</a>
+                        <a class="dropdown-item" href="domains.php">Functional Domain Mappings (InterPro)</a>
+                        <a class="dropdown-item" href="effector.php">Effector Proteins</a>
+                        <a class="dropdown-item" href="secretory.php">Secretory Proteins</a>
+                        <a class="dropdown-item" href="effectors.php">Effector and Secretory Proteins</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-auto pt-2">
+                <a href="genomicInformation.html" class="rk-nav-item"><i class="fa fa-database"></i> Datasets</a>
+            </div>
+
+            <div class="col-auto pt-2">
+                <!-- <a href="help.html" class="rk-nav-item"><i class="ion-help-circled"></i> Help</a> -->
+                <a href="help.html" class="rk-nav-item"><i class="ion-document-text"></i> User Guide </a>
+            </div>
+
+            <div class="col-auto ml-auto">
+                <form role="search" class="form-inline text-right">
+                  <select class="form-control select2 mr-2" id="searchSelect">
+                      <optgroup label="Puccinia species [Infecting Triticum]">
+                          <option value="pug99">Puccinia graminis Ug99</option>
+                          <option value="pgt21">Puccinia graminis 21-0</option>
+                      </optgroup>
+                  </select>
+                  <input id="proteinTOsearch" placeholder="Search e.g: 'GMQ_00017T0'" class="form-control mr-2" type="text">
+                  <a id="proteinSender" href=""><i class="fa fa-search" style="color:rgb(38, 92, 194)"></i></a>
+                </form>
+            </div>
+          </div>
+        </nav>
+
+        <!-- End Navigation Bar-->
+
+
+
+        <!-- ============================================================== 
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Title -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">TRustDB: Host-Pathogen Interaction Database of Stem Rust disease in <i>Triticum aestivum</i></h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 col-xl-8">
+                        <div class="card m-b-20">
+                        
+                        	<div class="card-body">
+                                <ul>
+                                    <li><a href="#"><img src="assets/images/gallery/1.jpg" height="175px" class="rk-img"></a></li>
+                                    <li><a href="#"><img src="assets/images/gallery/2.jpg" height="175px" class="rk-img"></a></li>
+                                    <li><a href="#"><img src="assets/images/gallery/3.png" height="175px" class="rk-img"></a></li>
+                                </ul>
+
+                                <hr>
+
+                                <h5 class="card-title">Database Overview</h5>
+                                <p style="font-size:16px" class="card-text">
+                                    Wheat (<i>Triticum aestivum</i>), the most widely cultivated crop in the world, ranks third and counts to around 35% of the total grains produced around the globe. Recently, the occurence of stem rust in wheat has affected the grain yield and quality of the crop to around 60-70%, thus being a major threat to the agriculture industry, worldwide. The disease is caused by two races of <i>Puccinia graminis</i>: 'Ug99' and '21-0'.
+                                </p>
+
+                                <p style="font-size:16px" class="card-text">
+                                    TRustDB, a database for <i>Triticum aestivum</i> -<i>Puccinia</i> species protein-protein interactions, provides valuable information about the <i>Puccinia</i> species, which includes various functional protein annotations of the proteins involved in the interactions.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- end col-->
+
+                    <div class="col-xs-12 col-lg-12 col-xl-4">
+                        <div class="card-box">
+                        	<!-- <h5 class="card-title">Species</h5> -->
+                            <table class="tablesaw m-t-20 table m-b-0" data-tablesaw-mode="stack">
+                                <thead>
+                                <tr>
+                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Host species</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody>
+                                <tr>
+                                    <td><i>Triticum aestivum</i></td>
+                                </tr>
+                                </tbody>
+
+                                <thead>
+                                <tr>
+                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Pathogen species</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td><i>Puccinia graminis</i> isolate Ug99 (<i>Pgt</i> Ug99)</td>
+                                </tr>
+                                <tr>
+                                    <td><i>Puccinia graminis</i> isolate 21-0 (<i>Pgt</i> 21-0)</td>
+                                </tr>
+                                </tbody>
+                                
+                            </table>
+                            <a href="genomicInformation.html" class="btn btn-primary">Download the proteomes of the species</a>
+
+                        </div>
+                    </div>
+                    <!-- end col-->
+
+
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="card-box tilebox-one">
+                            <h6 class="text-muted text-uppercase m-b-20">Protein sequences</h6>
+                            <h3 class="m-b-20"><span class="counter">162,601</span> <span class="subtext">(<i>T. aestivum</i>: 104,701 | <i>Pgt</i> Ug99: 22,524 | <i>Pgt</i> 21-0: 35,376) </span></h3>
+                            <button id="doSearchBlast" type="button" class="btn btn-purple btn-rounded waves-effect waves-light">BLAST</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-2">
+                        <div class="card-box tilebox-one">
+                            <h6 class="text-muted text-uppercase m-b-20">Effector proteins</h6>
+                            <h3 class="m-b-20"> <span class="counter">11,500</span> <span class="subtext">(<i>Pgt</i> Ug99: 4,330 | <i>Pgt</i> 21-0: 7,170)</span></h3>
+
+                            <button id="doPredicted" type="button" class="btn btn-primary btn-rounded waves-effect waves-light">Search</button>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-2">
+                        <div class="card-box tilebox-one">
+                            <h6 class="text-muted text-uppercase m-b-20">Secretory proteins</h6>
+                            <h3 class="m-b-20"><span class="counter">7,451</span> <span class="subtext">(<i>Pgt</i> Ug99: 2,193 | <i>Pgt</i> 21-0: 5,258)</span></h3>
+                            <button id="doMined" type="button" class="btn btn-primary btn-rounded waves-effect waves-light">Search</button>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="card-box tilebox-one">
+                            <h6 class="text-muted text-uppercase m-b-20">Host-pathogen interactome comparison</h6>
+                            <h6 class="m-b-20" style="padding-top: 37px"></h6>
+                            <button id="doHPI" type="button" class="btn btn-success btn-rounded waves-effect waves-light">Explore the tool</button>
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+
+            <!-- Footer -->
+            <footer class="footer">
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://bioinfo.usu.edu"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+            </footer>
+            <!-- End Footer -->
+
+
+        </div> <!-- End wrapper -->
+
+
+
+        
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Tether for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+
+        <!-- Counter Up  -->
+        <script src="assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+        <script>
+
+
+        $("#doSearchBlast").click(function() {
+            window.location.href = "https://bioinfo.usu.edu/trustdb/blast-submittion.html";
+        });
+        $("#doPredicted").click(function() {
+            window.location.href = "https://bioinfo.usu.edu/trustdb/effector.php";
+        });
+        $("#doMined").click(function() {
+            window.location.href = "https://bioinfo.usu.edu/trustdb/secretory.php";
+        });
+        $("#doHPI").click(function() {
+            window.location.href = "https://bioinfo.usu.edu/trustdb/interolog-wheat.html";
+        });
+
+        $("#proteinTOsearch").on('input', function() {
+            var proteinName = $(this).val();
+
+            console.log(proteinName);
+
+            if($.trim(proteinName)!=""){
+                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim(proteinName)+"&species="+$('select#searchSelect').val());
+            }
+        });
+
+        $("#searchSelect").change(function() {
+            $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim($('input#proteinTOsearch').val())+"&species="+$(this).val());
+        });
+
+        
+        </script>
+
+    </body>
+</html>

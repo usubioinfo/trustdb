@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="TRustDB: BLAST Submission Page">
+        <meta name="author" content="Raghav Kataria">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/gallery/favicon.ico">
+
+        <!-- App title -->
+        <title>TRustDB - BLAST Tool</title>
+
+        <!-- Plugins css-->
+        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+
+        <!-- form Uploads -->
+        <link href="assets/plugins/fileuploads/css/dropify.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom box css -->
+        <link href="assets/plugins/custombox/css/custombox.min.css" rel="stylesheet">
+
+        <!-- Switchery css -->
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src="assets/js/modernizr.min.js"></script>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCNJT2KP9D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DCNJT2KP9D');
+        </script>
+
+
+    </head>
+
+
+    <body>
+
+<!-- Navigation Bar-->
+    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  		  <div class="container-fluid pl-5">
+            <div class="row w-100 pl-4">
+
+              <div class="col">
+                <a class="" href="https://bioinfo.usu.edu">
+                  <img src='assets/images/kaabil_logo.png' height="70" alt="">
+                </a>
+              </div>
+              <div class="col-5">
+
+              </div>
+              <div class="col-auto">
+                  <!-- <a href="index.html"><img src='assets/images/gallery/favicon.ico' height="40px"></a> -->
+                  <!-- <a href="index.html"><img src='assets/images/gallery/alfalfa_logo.png' height="75px"></a> -->
+                  <a href="https://www.usu.edu/"><img src='assets/images/gallery/usu-logo1.png' height="70px"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="container-fluid usu-bg pl-5">
+          <div class="row py-3 pl-5">
+            <div class="col-auto pt-2">
+                <a href="index.html" class="rk-nav-item"><i class="zmdi zmdi-home"></i> Home</a>
+            </div>
+
+            <div class="col-auto pt-2">
+                <div class="dropdown">
+                    <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="pe-7s-hammer"></i> Tools
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="interolog-wheat.html">Interactomics</a>
+                        <a class="dropdown-item" href="searchTrustDB.html">Advanced search module</a>
+                        <a class="dropdown-item" href="blast-submittion.html">BLAST search</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-auto pt-2">
+                <div class="dropdown">
+                    <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="zmdi zmdi-format-list-bulleted"></i> Features
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="triticumHPI.php">Host-pathogen interactions</a>
+                        <div class="dropdown-divider"></div>
+                    
+                        <h6 class="ml-3" style="color:black"><b>Host</b></h6>
+                        <a class="dropdown-item" href="transcriptionFactors.php">Transcription Factors</a>
+                        <a class="dropdown-item" href="localizationHost.php">Subcellular Localization Annotations</a>
+                        <a class="dropdown-item" href="geneontologyHost.php">Gene Ontology (GO) Term Annotations</a>
+                        <a class="dropdown-item" href="domainsHost.php">Functional Domain Mappings (InterPro)</a>
+                        <hr>
+                    
+                        <h6 class="ml-3" style="color:black"><b>Pathogen</b></h6>
+                        <a class="dropdown-item" href="ortholog.php"><i>Puccinia</i> species Orthologs</a>
+                        <a class="dropdown-item" href="localization.php">Subcellular Localization Annotations</a>
+                        <a class="dropdown-item" href="geneontology.php">Gene Ontology (GO) Term Annotations</a>
+                        <a class="dropdown-item" href="domains.php">Functional Domain Mappings (InterPro)</a>
+                        <a class="dropdown-item" href="effector.php">Effector Proteins</a>
+                        <a class="dropdown-item" href="secretory.php">Secretory Proteins</a>
+                        <a class="dropdown-item" href="effectors.php">Effector and Secretory Proteins</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-auto pt-2">
+                <a href="genomicInformation.html" class="rk-nav-item"><i class="fa fa-database"></i> Datasets</a>
+            </div>
+
+            <div class="col-auto pt-2">
+                <a href="help.html" class="rk-nav-item"><i class="ion-document-text"></i> User guide </a>
+            </div>
+
+            <div class="col-auto ml-auto">
+                <form role="search" class="form-inline text-right">
+                    <select class="form-control select2 mr-2" id="searchSelect">
+                        <optgroup label="Puccinia species [Infecting Triticum]">
+                            <option value="pug99">Puccinia graminis Ug99</option>
+                            <option value="pgt21">Puccinia graminis 21-0</option>
+                        </optgroup>
+                    </select>
+                    <input id="proteinTOsearch" placeholder="Search e.g: 'GMQ_00017T0'" class="form-control mr-2" type="text">
+                    <a id="proteinSender" href=""><i class="fa fa-search" style="color:rgb(38, 92, 194)"></i></a>
+                  </form>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navigation Bar-->
+
+
+
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="wrapper">
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="blastModal" tabindex="-1" role="dialog" aria-labelledby="blastModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">About BLAST</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>From the degenerate nucleotide codes, only N is accepted. Please note that protein queries, with too many nucleotide-like code (A,C,G,T,N) may also cause problems.</p>
+                                <hr>
+                                <p>If you were running a protein blast query and then you want to run a nucleotide query, is better to reset the form (click reset button), to avoid miscalculations.</p>
+                                <hr>
+                                <p>The BLAST search will not accept "-" in the query. To represent gaps, use a string of N (nucleotides) or X (proteins) instead.</p>
+                                <hr>
+                                <p>Each sequence must have an identifier, and the identifier must start with ">".</p>
+                                <hr>
+                                <p>Default expected value (evalue) is 1e-5. Consider to increase this value to get more precise results.</p>
+                                <hr>
+                                <p>If you upload a fasta file and also paste sequences in the text area, the BLAST search program will only take the uploaded file into count.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="no-fasta" tabindex="-1" role="dialog" aria-labelledby="nofastaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #ff5d48; color: #ffffff;">
+                                <h5 class="modal-title" id="nofastaModalLabel" >Error</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Please upload a valid FASTA file or paste a valid sequence in the text area.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="wr-email" tabindex="-1" role="dialog" aria-labelledby="wr-emailModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #f1b53d; color: #ffffff;">
+                                <h5 class="modal-title" id="wr-emailModalLabel" >Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>There is a problem with the email provided. Please fix it or leave it blank to continue with the BLAST service.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="wr-evalue" tabindex="-1" role="dialog" aria-labelledby="wr-evalueModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #f1b53d; color: #ffffff;">
+                                <h5 class="modal-title" id="wr-evalueModalLabel" >Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>There is a problem with the evalue provided. Please fix it or leave it blank to continue with the BLAST service</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="wr-email-evalue" tabindex="-1" role="dialog" aria-labelledby="wr-email-evalueModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #f1b53d; color: #ffffff;">
+                                <h5 class="modal-title" id="wr-email-evalueaModalLabel" >Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>There is a problem with the email and evalue provided, Please fix both fields or leave them blank to continue with the service.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="onBlastTask" tabindex="-1" role="dialog" aria-labelledby="onBlastTaskLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" data-animation="fadein" >
+                    <div class="modal-dialog" role="document" style="padding-top: 15%;">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #1bb99a; color: #ffffff;">
+                                <h5 class="modal-title" id="onBlastTaskLabel" >Please be patient, your query is running</h5>
+                            </div>
+                            <div class="modal-body" id="onBlastTaskModalBody">
+                                <p>You have succesfully submitted a query to the BLAST search service at TRustDB.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-xl-8">
+                        <h4 class="page-title">BLAST search</h4>
+                    
+                    </div>
+                </div>
+
+                <!-- end row --> 
+
+
+
+                <form id="blastForm" >
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h6 >Upload FASTA file</h6>
+                                        <input id="fileSq" type="file" class="dropify" data-height="60" />
+                                        <h6 class="m-t-10">Or Paste your FASTA sequence<button type="button" id="loadDemoData" class="btn btn-link btn-sm waves-effect">(Load demo data)</button></h6>
+                                        <textarea style="font-size: 12px;" class="form-control" id="textareaSq" rows="3" > </textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"> 
+                                        <h6 class="m-t-20">Datasets</h6>
+                                        <select class="form-control select2" id="blastDatabase">
+                                            <option value="AllProteomes">All proteomes</option>
+                                            <option value="Taestivum">Triticum aestivum</option>
+                                            <option value="pug99">Puccinia graminis Ug99</option>
+                                            <option value="pgt21">Puccinia graminis 21-0</option>
+                                        </select>
+                                    </div>
+                                </div>                   
+                                <div class="row" style="padding-top: 10px;">
+                                    <div class="col-12">
+                                        <h6 class="m-t-10">Advance BLAST options</h6>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                            <div class="form-group">
+                                                <label>Expectation (e-value)</label>
+                                                <input class="form-control"  placeholder="1e-5" type="text" id="evalue">
+                                            </div>
+                                        </div>
+                                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                        <div class="form-group">
+                                            <label>Weight matrix</label>
+                                            <select class="form-control" id="selectWM">
+                                                <option value="BLOSUM62" selected="selected">Blosum62</option>
+                                                <option value="BLOSUM45">Blosum45</option>
+                                                <option value="BLOSUM80">Blosum80</option>
+                                                <option value="PAM30">Pam30</option>
+                                                <option value="PAM70">Pam70</option>
+                                                <option value="PAM120">Pam120</option>
+                                                <option value="PAM160">Pam160</option>
+                                                <option value="PAM250">Pam250</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                        <div class="form-group">
+                                            <label>Number of results</label>
+                                            <select class="form-control" id="selectNR">
+                                                <option>1</option>
+                                                <option selected="selected">5</option>
+                                                <option>10</option>
+                                                <option>20</option>
+                                                <option>50</option>
+                                                <option>50+</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-box">
+                                <div class="form-group">
+                                    <label >Email address (Optional)</label>
+                                    <input name="email" placeholder="Enter email" class="form-control" id="emailAddress" type="email" >
+                                </div>
+                                <div class="button-list">
+                                    <button class="btn btn-primary waves-effect waves-light btn-lg" type="reset" id="resetBlastForm">Reset</button>
+                                    <button class="btn btn-success waves-effect waves-light btn-lg" type="button" id="runBlast" >Run BLAST</button>
+                                    <i class="zmdi zmdi-info-outline" style="font-size: 25px" data-toggle="modal" data-target="#blastModal"></i>
+                                </div>
+                            </div>
+
+                        </div><!-- end col-->
+
+                    </div>
+                </form>
+
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+
+            <!-- Footer -->
+            <footer class="footer">
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://bioinfo.usu.edu"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+            </footer>
+            <!-- End Footer -->
+
+
+
+        </div> <!-- End wrapper -->
+
+
+
+
+        
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Tether for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+
+        <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script src="assets/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+
+
+        <!-- file uploads js -->
+        <script src="assets/plugins/fileuploads/js/dropify.min.js"></script>
+
+        <!-- Modal-Effect -->
+        <script src="assets/plugins/custombox/js/custombox.min.js"></script>
+        <script src="assets/plugins/custombox/js/legacy.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+        <script type="text/javascript">
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong appended.'
+                },
+                error: {
+                    'fileSize': 'The file size is too big (1M max).' // TODO BECAUSE 1M IS TOO SMALL
+                }
+            });
+        </script>
+
+        
+
+
+        <script>
+            //TODO DOCUMENTATION
+
+            $("#proteinTOsearch").on('input', function() {
+                var proteinName = $(this).val();
+
+                if($.trim(proteinName)!=""){
+                    $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim(proteinName)+"&species="+$('select#searchSelect').val());
+                }
+            });
+
+
+            $("#searchSelect").change(function() {
+                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim($('input#proteinTOsearch').val())+"&species="+$(this).val());
+            });
+
+            
+            function testFasta(fastaText) {
+                var checkPass = true;
+                var protSeq = false;
+                var nuclSeq = false;
+                var fastaSequences = fastaText;
+                var checkStatus = 0;
+                //Extract TextArea Element Value
+
+                var sequences = fastaSequences.split('\n');
+                if(sequences.length>1){
+
+                    var isFastaHeader = false;
+                    var protSeq = false;
+                    var nuclSeq = false;
+                    //
+                    var nucleotideRegex= new RegExp('^[ATGCN]*$');
+                    var aminoacidRegex= new RegExp('^[ILVFMCAGPTSYWQNHEDKRXUBZ]+[\*]*$');
+                    //var sequences = fastaSequences.split('\n');
+                    var firstLine = sequences[0].trim();
+                    if(firstLine.charAt(0)=='>'){
+
+                        //console.log("ID in First line");
+                        if(nucleotideRegex.test(sequences[1].trim())){
+                            nuclSeq = true;
+                            //console.log("Is a nucleotide seq");
+                        } else if(aminoacidRegex.test(sequences[1].trim())){
+                            protSeq = true;
+                            //console.log("Is a protein seq");
+                        } else{
+                            //console.log("Is nothing");
+                            checkPass = false;
+                        }
+                        if(checkPass){
+                            var sequenceStatus = 1;//0 if last line was space, 1 if last line was id, 2 if last line were sequences
+
+                            for (i = 1; i < sequences.length; i++) { 
+                                //console.log(sequences[i].length);
+                                if(sequences[i].trim().charAt(0)=='>' && sequenceStatus != 1){
+                                    //console.log("Id reading");
+                                    sequenceStatus = 1;
+                                } else if(nuclSeq && nucleotideRegex.test(sequences[i].trim()) && sequenceStatus > 0){
+                                    isFastaHeader = true;
+                                    sequenceStatus = 2;
+                                    //console.log("nucleotide reading");
+                                } else if(protSeq && aminoacidRegex.test(sequences[i].trim()) && sequenceStatus > 0){
+                                    isFastaHeader = true;
+                                    sequenceStatus = 2;
+                                    //console.log("protein reading");
+                                } else if(sequences[i].trim().length == 0 && sequenceStatus > 0){
+                                    //console.log("space reading");
+                                    sequenceStatus = 0;
+                                } else {
+                                    checkPass = false;
+                                    //console.log("false sequence");
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if(!checkPass){
+                            //console.log('Wrong file');
+                        }
+
+                    } else {
+                        checkPass = false;
+                        //console.log('First line does not include an ID');
+                    }
+                    
+                }
+
+
+                if(nuclSeq){
+                    checkStatus = 2;
+                } else if(protSeq){
+                    checkStatus = 1;
+                }
+
+                if(checkPass){
+                    checkStatus += 5;
+                }               
+
+                return checkStatus;
+            }
+
+            ////console.log("This seems to be working");
+
+            $("#runBlast").click(function() {
+                var proceed = false;
+                var validEmail = 0;
+                var validEvalue = 0;
+                var isProt = 0;
+
+                var weightMatrix = $('select#selectWM').val();
+                var numberResults = $('select#selectNR').val();
+                var evalue = $('input#evalue').val();
+                var database = $('select#blastDatabase').val();
+
+                var emailAddress = $('input#emailAddress').val();
+                var regexEmail = /\S+@\S+\.\S+/
+
+                if(emailAddress.length > 0){
+                    if(regexEmail.test(emailAddress.trim())){
+                        validEmail = 1;
+                    } else {
+                        //console.log("Email testing failed, not using email");
+                        validEmail = 2;
+                        emailAddress = "noemail";
+                    }
+                } else {
+                    emailAddress = "noemail";
+                    //console.log("Not using email");
+                }
+
+                if(evalue.length > 0){
+                    if(!isNaN(evalue)){
+                        validEvalue = 1;
+                    } else {
+                        //console.log("Evalue testing failed, using default evalue");
+                        evalue = '1e-5';
+                        validEvalue = 2;
+                    }
+                } else {
+                    evalue = '1e-5';
+                    //console.log("Using default evalue");
+                }
+
+
+                var correctFastaFile = 0;
+                var correctFastaArea = 0;
+
+                if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+                  alert('The File APIs are not fully supported in this browser.');
+                  return;
+                }   
+
+                var fastaFile = document.getElementById("fileSq").files[0];
+                var fastaSequences = $('textarea#textareaSq').val();
+                //console.log(fastaFile);
+
+                reader = new FileReader();
+                reader.onload = function(e){
+
+                    //console.log(fastaFile);
+                    if (!fastaFile) {
+                        //console.log("Um, couldn't find the fileinput element.");
+
+                    } else {
+                        var fastaContent = reader.result;
+                        correctFastaFile = testFasta(fastaContent);
+                    }
+
+                    if(correctFastaFile >= 5){
+                        //console.log("File upload seems to be a fasta");
+                        proceed = true;
+                    } else{
+
+                        if(!fastaSequences.trim()){
+                            //console.log('Upload a file or Paste a Sequence');
+                        } else {
+                            correctFastaArea= testFasta(fastaSequences);
+                        }
+
+                        if(correctFastaArea >= 5){
+                            //console.log("Textarea content seems to be a fasta");
+                            proceed = true;
+                        } else{
+                            //console.log("Neither file or textarea are fastas");
+                        }
+                    }
+                    
+                    if(proceed){
+                        
+                        var blastFormData = new FormData();
+                        blastFormData.append("weightMatrix", weightMatrix);
+                        blastFormData.append("numberResults", numberResults);
+                        blastFormData.append("evalue", evalue);
+                        blastFormData.append("database", database);
+
+
+                        if(correctFastaFile >= 5){
+                            blastFormData.append("typeSeq", "file");
+                            blastFormData.append("sequences", fastaFile);
+                            //console.log(correctFastaFile);
+                            if(correctFastaFile < 7){
+                                blastFormData.append("blastType", "blastp");
+                            } else {
+                                blastFormData.append("blastType", "blastx");
+                            } 
+                        } else if(correctFastaArea >= 5){
+                            blastFormData.append("typeSeq", "text");
+                            blastFormData.append("sequences", fastaSequences);
+                            //console.log(correctFastaArea);
+                            if(correctFastaArea < 7){
+                                blastFormData.append("blastType", "blastp");
+                            } else {
+                                blastFormData.append("blastType", "blastx");
+                            } 
+                        }
+
+
+                        
+
+                        if(validEmail==2 && validEvalue == 2){
+                            $('#wr-email-evalue').modal();
+                        } else if(validEmail==2){
+                            $('#wr-email').modal();
+                        } else if(validEvalue == 2){
+                            $('#wr-evalue').modal();
+                        } else {
+
+                            $('#onBlastTask').modal();
+
+                            blastFormData.append("emailAddress", emailAddress);
+
+                            
+                            var request = new XMLHttpRequest();
+                            request.open("POST", "https://bioinfo.usu.edu/trustdb/blast-task.php",true);//TODO
+
+
+                            request.onload = function () {
+                                if (request.readyState === request.DONE) {
+                                    if (request.status === 200) {
+                                        console.log(request.response);
+                                        var resultUrl = "https://bioinfo.usu.edu/trustdb/blast-results.php?result=" + request.response;
+                                        window.location.href = resultUrl;
+                                        //console.log(request.responseText);
+                                    }
+                                }
+                            };
+
+                            request.send(blastFormData);
+                        }
+
+                    
+                        //window.location.href = "https://bioinfo.usu.edu/trustdb/blast-results.php";
+                        
+
+                    } else {
+                        $('#no-fasta').modal('show');
+                    }
+                }        
+                ////console.log(fastaContent);
+                if(!fastaFile){
+                    var dummyFileObj = new File(["do not touch this file."], "dummy_file.txt");
+                    reader.readAsText(dummyFileObj);
+
+                } else {
+                    reader.readAsText(fastaFile);
+                }
+                
+            });
+
+            $("#resetBlastForm").click(function() {
+                var drEvent = $('#fileSq').dropify();
+                drEvent = drEvent.data('dropify');
+                drEvent.resetPreview();
+                drEvent.clearElement();
+                ////console.log("reset?");
+            });
+
+            $("#loadDemoData").click(function() {
+                var demoFasta = ">AAT5_ARATH\nMASLMLSLGSTSLLPREINKDKLKLGTSASNPFLKAKSFSRVTMTVAVKPSRFEGITMAPPDPILGVSEAFKADTNGMKLNLGVGAYRTEELQPYVLNVVKKAENLMLERGDNKEYLPIEGLAAFNKATAELLFGAGHPVIKEQRVATIQGLSGTGSLRLAAALIERYFPGAKVVISSPTWGNHKNIFNDAKVPWSEYRYYDPKTIGLDFEGMIADIKEAPEGSFILLHGCAHNPTGIDPTPEQWVKIADVIQEKNHIPFFDVAYQGFASGSLDEDAASVRLFAERGMEFFVAQSYSKNLGLYAERIGAINVVCSSADAATRVKSQLKRIARPMYSNPPVHGARIVANVVGDVTMFSEWKAEMEMMAGRIKTVRQELYDSLVSKDKSGKDWSFILKQIGMFSFTGLNKAQSDNMTDKWHVYMTKDGRISLAGLSLAKCEYLADAIIDSYHNVS\n>TGA1B_TOBAC\nEFCDFSGNQAAGGVMVMDTSSPELRQSSSGSDVLNATSSTSSHQVSGDVAGYLNVPSPESNGSNHEGSRESANDNKGLGDARVLNCHSPESQGSGNYGSNVSEGLNYPSDSNKSVHSSPNFENNSIKNGAVEEKIKLEGVNANISKCSSLLKRKKSSEDSNNINIHQKLTNVALSDNVNNDEDEKKRARLVRNRESAQLSRQRKKHYVEELEDKVRIMHSTIQDLNAKVAYIIAENATLKTQ\n>AAT1_ARATH\nMALAMMIRNAASKRGMTPISGHFGGLRSMSSWWKSVEPAPKDPILGVTEAFLADPSPEKVNVGVGAYRDDNGKPVVLECVREAEKRLAGSTFMEYLPMGGSAKMVDLTLKLAYGDNSEFIKDKRIAAVQTLSGTGACRLFADFQKRFSPGSQIYIPVPTWSNHHNIWKDAQVPQKTYHYYHPETKGLDFSALMDDVKNAPEGSFFLLHACAHNPTGVDPTEEQWREISQLFKAKKHFAFFDMAYQGFASGDPARDAKSIRIFLEDGHHIGISQSYAKNMGLYGQRVGCLSVLCEDPKQAVAVKSQLQQLARPMYSNPPLHGAQLVSTILEDPELKSLWLKEVKVMADRIIGMRTTLRESLEKLGSPLSWEHVTKQIGMFCYSGLTPEQVDRLTSEYHIYMTRNGRISMAGVTTGNVGYLANAIHEVTKSS\n>AT4G36350.1\nMRMNKILLVFVFLSIATVINSGTTSNFVRTAQPSTEMSLETFPSPAGHNAPEQVHIVQGDYNGRGIIISWVTPLNLAGSNVVTYWKAVDGDVKPKKKRGHASTSSYRFYDYTSGFLHHATIKGLEYDTKYIYEVGTDGSVRQFSFTSPPKVGPDVPYTFGIIGDLGQTLASNETLYHYMSNPKGQAVLFPGDLSYADDHPNHDQRKWDSWGRFVEPCAAYQTFIYAAGNHEIDFVPNIGEPHAFKPYIHRYHNAYKASKSISPLWYSIRRASAHIIVLSSYSAYGKYTPQYVWLEQELKKVNREETPWLIVMVHSPWYNSNNYHYMEGESMRAMFESWFVNSKVDLVLSGHVHSYERSERVSNIKYNITNGLSYPVKDPSAPIYITIGDGGNIEGIANSFTDPQPSYSAYREASFGHAVLEIYNRTHAYYTWHRNQDNEPVAADSIMLHNRYFFPVEELESGNTRA"
+                document.getElementById("textareaSq").value = demoFasta;
+                ////console.log("reset?");
+            });
+
+
+            
+
+        </script>
+
+        
+
+    </body>
+</html>

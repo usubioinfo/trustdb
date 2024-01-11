@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="TRustDB: Advanced Search Interface.">
+        <meta name="author" content="Raghav Kataria">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/gallery/favicon.ico">
+
+        <!-- App title -->
+        <title>Advanced Search - TRustDB</title>
+
+        <!-- Plugins css-->
+        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+
+        <!-- form Uploads -->
+        <link href="assets/plugins/fileuploads/css/dropify.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom box css -->
+        <link href="assets/plugins/custombox/css/custombox.min.css" rel="stylesheet">
+
+        <!-- Switchery css -->
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src="assets/js/modernizr.min.js"></script>
+
+        <style>
+
+          label{
+            color: #2669a0;
+          }
+
+        </style>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCNJT2KP9D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DCNJT2KP9D');
+        </script>
+        
+
+    </head>
+
+    <body>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container-fluid pl-5">
+    <div class="row w-100 pl-4">
+
+      <div class="col">
+        <a class="" href="https://bioinfo.usu.edu">
+          <img src='assets/images/kaabil_logo.png' height="70" alt="">
+        </a>
+      </div>
+      <div class="col-5">
+
+      </div>
+      <div class="col-auto">
+          <!-- <a href="index.html"><img src='assets/images/gallery/favicon.ico' height="40px"></a> -->
+          <!-- <a href="index.html"><img src='assets/images/gallery/triticum_logo.png' height="75px"></a> -->
+          <a href="https://www.usu.edu/"><img src='assets/images/gallery/usu-logo1.png' height="70px"></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="container-fluid usu-bg pl-5">
+  <div class="row py-3 pl-5">
+    <div class="col-auto pt-2">
+        <a href="index.html" class="rk-nav-item"><i class="zmdi zmdi-home"></i> Home</a>
+    </div>
+
+    <div class="col-auto pt-2">
+        <div class="dropdown">
+            <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="pe-7s-hammer"></i> Tools
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="interolog-wheat.html">Interactomics</a>
+                <a class="dropdown-item" href="searchTrustDB.html">Advanced search module</a>
+                <a class="dropdown-item" href="blast-submittion.html">BLAST search</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-auto pt-2">
+        <div class="dropdown">
+            <div class="rk-nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="zmdi zmdi-format-list-bulleted"></i> Features
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="triticumHPI.php">Host-pathogen interactions</a>
+                <div class="dropdown-divider"></div>
+            
+                <h6 class="ml-3" style="color:black"><b>Host</b></h6>
+                <a class="dropdown-item" href="transcriptionFactors.php">Transcription Factors</a>
+                <a class="dropdown-item" href="localizationHost.php">Subcellular Localization Annotations</a>
+                <a class="dropdown-item" href="geneontologyHost.php">Gene Ontology (GO) Term Annotations</a>
+                <a class="dropdown-item" href="domainsHost.php">Functional Domain Mappings (InterPro)</a>
+                <hr>
+            
+                <h6 class="ml-3" style="color:black"><b>Pathogen</b></h6>
+                <a class="dropdown-item" href="ortholog.php"><i>Puccinia</i> species Orthologs</a>
+                <a class="dropdown-item" href="localization.php">Subcellular Localization Annotations</a>
+                <a class="dropdown-item" href="geneontology.php">Gene Ontology (GO) Term Annotations</a>
+                <a class="dropdown-item" href="domains.php">Functional Domain Mappings (InterPro)</a>
+                <a class="dropdown-item" href="effector.php">Effector Proteins</a>
+                <a class="dropdown-item" href="secretory.php">Secretory Proteins</a>
+                <a class="dropdown-item" href="effectors.php">Effector and Secretory Proteins</a>
+            </div>
+          </div>
+    </div>
+
+
+    <div class="col-auto pt-2">
+        <a href="genomicInformation.html" class="rk-nav-item"><i class="fa fa-database"></i> Datasets</a>
+    </div>
+
+    <div class="col-auto pt-2">
+        <a href="help.html" class="rk-nav-item"><i class="ion-document-text"></i> User guide </a>
+    </div>
+
+    <div class="col-auto ml-auto">
+      <form role="search" class="form-inline text-right">
+        <select class="form-control select2 mr-2" id="searchSelect">
+            <optgroup label="Puccinia species [Infecting Triticum]">
+                <option value="pug99">Puccinia graminis Ug99</option>
+                <option value="pgt21">Puccinia graminis 21-0</option>
+            </optgroup>
+          </select>
+          <input id="proteinTOsearch" placeholder="Search e.g: 'GMQ_00017T0'" class="form-control mr-2" type="text">
+          <a id="proteinSender" href=""><i class="fa fa-search" style="color:rgb(197, 223, 81)"></i></a>
+        </form>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation Bar-->
+
+
+
+
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="wrapper">
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="wr-all" tabindex="-1" role="dialog" aria-labelledby="wr-allModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document" style="padding-top: 15%;">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #f1b53d; color: #ffffff;">
+                                <h5 class="modal-title" id="wr-ModalLabel" >Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>You must provide a keyword</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="onTask" tabindex="-1" role="dialog" aria-labelledby="onTaskLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" data-animation="fadein" >
+                    <div class="modal-dialog" role="document" style="padding-top: 15%;">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #1bb99a; color: #ffffff;">
+                                <h5 class="modal-title" id="onTaskLabel" >Searching.....</h5>
+                            </div>
+                            <div class="modal-body" id="onTaskModalBody">
+                                <img src="assets/images/loading.gif" width="120" style="display: block;margin-left: auto;margin-right: auto;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-xl-8">
+                        <h4 class="page-title">Advanced Search Module</h4>
+                    </div>
+                </div>
+
+                <!-- end row --> 
+
+
+                <form id="interologForm" >
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <p style="text-align: justify;"> You may use this form to search proteins that match selected filtering criteria. Wild cards (partial words/names) are enabled for this search. This module could be use if for example you would like to retrieve certain records of a given length or that are related with some biological process.</p>
+                                <h6 style="text-align: justify;"> This module is comprehensive and will look for protein annotations, Gene Ontology terms, experiment descriptions and many others that would match to the provided keyword. </h6>
+                                <div class="row" style="padding-top: 20px;">                                        
+                                    <div class="col-md-5" >
+                                        <label> Keyword * <span style="font-weight: normal;color: #000000;">(e.g: GMQ_02857T1, GTPase)</span> </label>
+                                        <input id="keywordToSearch" placeholder="Kinase"  class="form-control" type="text" >
+                                    </div>
+                                    
+                                    <div class="col-md-3" >
+                                        <label> Species </label>
+                                        <select class="form-control select2" id="speciesSelect" style="font-style: italic;">
+                                                <option value="ALL">All species</option>
+                                            <optgroup label="Puccinia species [Infecting Triticum]" style="font-style: italic;">
+                                                    <option value="pug99">Puccinia graminis Ug99</option>
+                                                    <option value="pgt21">Puccinia graminis 21-0</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 20px;">                                        
+                                    <div class="col-md-3" >
+                                        <label> Protein length </label>
+                                        <div class="row" >
+                                            <div class="col-md-5" >
+                                                <input id="minLengthSearch" placeholder="Min (49)"  class="form-control" type="text" >
+                                            </div>  
+                                            <div class="col-md-1" >
+                                            -
+                                            </div>
+                                            <div class="col-md-5" >
+                                                <input id="maxLengthSearch" placeholder="Max (5035)"  class="form-control" type="text" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" >
+                                        <label> Genome range </label>
+                                        <div class="row" >
+                                            <div class="col-md-5" >
+                                                <input id="startSearch" placeholder="Start"  class="form-control" type="text" >
+                                            </div>  
+                                            <div class="col-md-1" >
+                                            -
+                                            </div>
+                                            <div class="col-md-5" >
+                                                <input id="endSearch" placeholder="End"  class="form-control" type="text" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" >
+                                        <label> Subcellular localization </label>
+                                        <select class="form-control select2" id="sublocSelect">
+                                            <option value="ALL">All localizations</option>
+                                            <option value="Cytoplasm">Cytoplasm</option> -->
+                                            <option value="Extracellular">Extracellular</option>
+                                            <option value="CellMembrane">Cell Membrane</option>
+                                            <option value="Nucleus">Nucleus</option>
+                                            <option value="Mitochondira">Mitochondira</option>
+                                            <option value="Plastid">Plastid</option>
+                                            <option value="Peroxisome">Peroxisome</option>
+                                            <option value="Lysosome">Lysosome</option>
+                                            <option value="GolgiApparatus">Golgi Apparatus</option>
+                                            <option value="EndoplasmicReticulum">Endoplasmic Reticulum</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <p style="padding-top: 40px;"> Protein length and genome range values must be numeric, if those are not numeric the values will be ignored in the search. </p>
+
+                                <p style="text-align: justify;"> *Keyword is the only field that is required to run the search, you may leave the others blank if preferred. Placeholders inside input boxes are just hints for the users to help them to know what to type inside. If the user want to use an additional filter (e.g: Protein length) must type something in those boxes to run a valid search. </p>
+
+                                <div class="button-list" style="padding-top: 20px;">
+                                    <button class="btn btn-success waves-effect waves-light btn-lg" type="button" id="runSearch" style="width: 200px;" >Search</button>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end col -->
+                    </div>
+                </form>
+                <!-- end row -->
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+
+            <!-- Footer -->
+            <footer class="footer">
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://bioinfo.usu.edu"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+            </footer>
+            <!-- End Footer -->
+
+
+        
+
+
+        </div> <!-- End wrapper -->
+
+
+
+
+        
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Tether for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+
+        <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script src="assets/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+
+
+        <!-- file uploads js -->
+        <script src="assets/plugins/fileuploads/js/dropify.min.js"></script>
+
+        <!-- Modal-Effect -->
+        <script src="assets/plugins/custombox/js/custombox.min.js"></script>
+        <script src="assets/plugins/custombox/js/legacy.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+
+        <script type="text/javascript">
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong appended.'
+                },
+                error: {
+                    'fileSize': 'The file size is too big (1M max).' // TODO BECAUSE 1M IS TOO SMALL
+                }
+            });
+        </script>
+
+        <script>
+            
+            $("#header").load("header.html");
+        </script>
+
+
+        <script>
+            //TODO DOCUMENTATION
+
+
+
+            $("#proteinTOsearch").on('input', function() {
+                var proteinName = $(this).val();
+
+                if($.trim(proteinName)!=""){
+                    $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim(proteinName)+"&species="+$('select#searchSelect').val());
+                }
+            });
+
+            $("#searchSelect").change(function() {
+                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim($('input#proteinTOsearch').val())+"&species="+$(this).val());
+            });
+
+            $("#runSearch").click(function() {
+
+
+                var keyword = $('input#keywordToSearch').val();
+                var speciesVal = $('select#speciesSelect').val();
+                var minLength = $('input#minLengthSearch').val();
+                var maxLength = $('input#maxLengthSearch').val();
+                var sstart = $('input#startSearch').val();
+                var ssend = $('input#endSearch').val();
+                var subloc = $('select#sublocSelect').val();
+                ///console.log("I am here");
+
+                if(minLength.length > 0){
+                    if(isNaN(minLength)){
+                        minLength = '0';
+                    }
+                } else {
+                    minLength = '0';
+                }
+
+                if(maxLength.length > 0){
+                    if(isNaN(maxLength)){
+                        maxLength = '100000';
+                    }
+                } else {
+                    maxLength = '100000';
+                }
+
+                if(sstart.length > 0){
+                    if(isNaN(sstart)){
+                        sstart = '0';
+                    }
+                } else {
+                    sstart = '0';
+                }
+
+                if(ssend.length > 0){
+                    if(isNaN(ssend)){
+                        ssend = '10000000000000000';
+                    }
+                } else {
+                    ssend = '10000000000000000';
+                }
+
+
+                if(keyword.length > 0){
+
+                    var formData = new FormData();
+
+                    var namer = new Date().valueOf();
+                    formData.append("namer", namer);
+
+                    formData.append("keyword", keyword);
+                    formData.append("species", speciesVal);
+
+                    formData.append("minLength", minLength);
+                    formData.append("maxLength", maxLength);
+                    formData.append("sstart", sstart);
+                    formData.append("ssend", ssend);
+
+                    formData.append("subloc", subloc);
+                    // console.log(formData);
+
+                    var request = new XMLHttpRequest();
+                    request.open("POST", "https://bioinfo.usu.edu/trustdb/keywordSearchQuery.php",true);
+                    $('#onTask').modal("show");
+                    request.onload = function () {
+                        if (request.readyState === request.DONE) {
+                            if (request.status === 200) {
+                                resultTask = request.response;
+                                var resultUrl = "https://bioinfo.usu.edu/trustdb/keywordSearch-results.php?result=" + resultTask;
+                                window.location.href = resultUrl;
+                                //console.log(request.responseText);
+                            }
+                        }
+                    };
+                    request.send(formData);
+                    
+                } else {
+                    $('#wr-all').modal();
+                }
+           
+            });
+
+
+        </script>
+    </body>
+</html>
