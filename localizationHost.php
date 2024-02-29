@@ -57,7 +57,7 @@
     <div class="row w-100 pl-4">
 
     <div class="col">
-        <a class="" href="https://bioinfo.usu.edu">
+        <a class="" href="https://kaabil.net">
         <img src='assets/images/kaabil_logo.png' height="70" alt="">
         </a>
     </div>
@@ -165,7 +165,7 @@
                             </div>
                             <div class="modal-body">
                                 <p>
-                                    This module comprises of protein subcellular localization annotations of the <i>Triticum aestivum</i> proteins, predicted using the tool: <a target="_blank" href="https://bioinfo.usu.edu/Plant-mSubP/">Plant-mSubP</a>.
+                                    This module comprises of protein subcellular localization annotations of the <i>Triticum aestivum</i> proteins, predicted using the tool: <a target="_blank" href="https://kaabil.net/Plant-mSubP/">Plant-mSubP</a>.
                                 </p>
                                 
                             </div>
@@ -233,7 +233,7 @@
 
             <!-- Footer -->
             <footer class="footer">
-                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://bioinfo.usu.edu"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://kaabil.net"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
             </footer>
             <!-- End Footer -->
 
@@ -320,7 +320,7 @@
             formData.append("species", $('select#triticum').val());
                 
             var request = new XMLHttpRequest();
-            request.open("POST", "https://bioinfo.usu.edu/trustdb/queryHostLoc.php",true);
+            request.open("POST", "https://kaabil.net/trustdb/queryHostLoc.php",true);
             request.onload = function () {
                 if (request.readyState === request.DONE) {
                     if (request.status === 200) {

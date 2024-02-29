@@ -151,7 +151,7 @@ if ($queryResult = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	
 
 
-header("Location: https://bioinfo.usu.edu/trustdb/proteinSearch.php?protein=".$proteinAccesion."&species=".$speciesName);
+header("Location: https://kaabil.net/trustdb/proteinSearch.php?protein=".$proteinAccesion."&species=".$speciesName);
 
 
 ?>

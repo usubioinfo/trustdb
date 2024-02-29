@@ -426,7 +426,7 @@ function Network (networkdata){
         var formData = new FormData();
         formData.append("accession", firstNode.label);
         var request = new XMLHttpRequest();
-        request.open("POST", "https://bioinfo.usu.edu/trustdb/queryTrustNetwork.php",true);
+        request.open("POST", "https://kaabil.net/trustdb/queryTrustNetwork.php",true);
 
         request.onload = function () {
         if (request.readyState === request.DONE) {
@@ -447,7 +447,7 @@ function Network (networkdata){
           var formData = new FormData();
           formData.append("accession", e.data.node.label);
           var request = new XMLHttpRequest();
-          request.open("POST", "https://bioinfo.usu.edu/trustdb/queryTrustNetwork.php",true);
+          request.open("POST", "https://kaabil.net/trustdb/queryTrustNetwork.php",true);
 
           request.onload = function () {
           if (request.readyState === request.DONE) {

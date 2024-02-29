@@ -68,9 +68,9 @@ exec($blastAlignmentsFormatInstruction, $output, $return_var);
 
 
 if($emailAddress != "noemail"){
-	$msgEmail = "Your BLAST job at TRustDB is completed! \nPlease go to https://bioinfo.usu.edu/trustdb/blast-results.php?result=$namer to see it.";
+	$msgEmail = "Your BLAST job at TRustDB is completed! \nPlease go to https://kaabil.net/trustdb/blast-results.php?result=$namer to see it.";
 	$msgEmail = wordwrap($msgEmail,70);
-	$from = "noreply@bioinfo.usu.edu";
+	$from = "noreply@kaabil.net";
 	$headers = "From: $from"; 
 	$mail= mail($emailAddress,"TRustDB BLAST results",$msgEmail,$headers,'-f '.$from);
 	if($mail){
