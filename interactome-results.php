@@ -481,7 +481,7 @@ if($finished_bool && !($empty_results)){
                     user
                 }
 
-                axios.post('https://bioinfocore.usu.edu/api/email/send', body)
+                axios.post('https://kaabil.net/api/email/send', body)
                     .then(res => {
                         console.log(res);
                     })
