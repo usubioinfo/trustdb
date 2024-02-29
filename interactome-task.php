@@ -3,6 +3,11 @@
 ini_set('display_errors', 1);
 error_reporting(1);
 
+// Set headers to allow all origins
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type');
+
 include 'dictionary.php';
 
 $coverageA= $_POST['coverageA'];
