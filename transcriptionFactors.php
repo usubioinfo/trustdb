@@ -294,80 +294,90 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
-
-
-                //Buttons examples
+                // Initialize the DataTable
                 var table = $('#tableEffectors').DataTable({});
-                var buttonSearch = document.getElementById("buttonSearch");
-                buttonSearch.click();
 
+                // Log when the document is ready and the table is initialized
+                console.log('Document ready and DataTable initialized.');
 
-            } );
+                // Trigger search automatically on document ready - consider if this is desired behavior
+                $('#buttonSearch').click(); // If you don't want an automatic search, you might remove or modify this line
+            });
 
-        $("#proteinTOsearch").on('input', function() {
-            var proteinName = $(this).val();
+            // Event handler for input on the protein search field
+            $("#proteinTOsearch").on('input', function() {
+                var proteinName = $(this).val();
 
-            if($.trim(proteinName)!=""){
-                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim(proteinName)+"&species="+$('select#searchSelect').val());
-            }
-            
-        });
+                // Log the protein name being searched
+                console.log('Protein search input changed: ', proteinName);
 
-        $("#searchSelect").change(function() {
-            $('#proteinSender').attr('href', "proteinSearchQuery.php?protein="+$.trim($('input#proteinTOsearch').val())+"&species="+$(this).val());
-        });
+                if($.trim(proteinName) != ""){
+                    $('#proteinSender').attr('href', "proteinSearchQuery.php?protein=" + $.trim(proteinName) + "&species=" + $('select#searchSelect').val());
 
-        $("#buttonSearch").click(function() {
+                    // Log the updated href for the protein sender link
+                    console.log('Protein sender href updated: ', $('#proteinSender').attr('href'));
+                }   
+            });
 
+            // Event handler for change in the species select dropdown
+            $("#searchSelect").change(function() {
+                $('#proteinSender').attr('href', "proteinSearchQuery.php?protein=" + $.trim($('input#proteinTOsearch').val()) + "&species=" + $(this).val());
 
-            var formData = new FormData();
+                // Log the change in species selection and the updated href
+                console.log('Species selection changed. Protein sender href updated: ', $('#proteinSender').attr('href'));
+            });
 
-            var namer = new Date().valueOf();
-            formData.append("namer", namer);
+            // Event handler for the search button click
+            $("#buttonSearch").click(function() {
+                console.log('Search button clicked.');
 
-            formData.append("species", $('select#triticumI').val());
-                
-            var request = new XMLHttpRequest();
-            request.open("POST", "https://kaabil.net/trustdb/queryWheatTF.php",true);
-            request.onload = function () {
-                if (request.readyState === request.DONE) {
-                    if (request.status === 200) {
-                        resultTask = request.response;
-                        var queryResult = request.responseText;
-                        var lines = queryResult.split("\\n");
+                var formData = new FormData();
+                var namer = new Date().valueOf();
+                formData.append("namer", namer); // Log the unique identifier for the request
+                formData.append("species", $('select#triticumI').val());
 
-                        var tableString  = '';
+                console.log('FormData prepared for request:', { namer: namer, species: $('select#triticumI').val() });
 
-                    
-                        
-                        for(i = 0; i< lines.length-1; i++){
-                            record = lines[i].split("\t");
+                var request = new XMLHttpRequest();
+                request.open("POST", "https://kaabil.net/trustdb/queryWheatTF.php", true);
 
-                            tableString  = tableString + '<tr>';
-                            tableString  = tableString + '<td><a href="https://plants.ensembl.org/Multi/Search/Results?species=all;idx=;q=' +record[0]+ ';site=ensemblunit' +'" target="_blank">'+ record[0] +'</a></td>';
-                            tableString  = tableString + '<td><a href="http://planttfdb.gao-lab.org/family.php?fam=' + record[1] + '" target="_blank">'+ record[1] +'</a></td>';
-                            tableString  = tableString + '<td><a href="https://www.genome.jp/dbget-bin/www_bget?' + record[2] + '" target="_blank">'+ record[2] +'</a></td>';
-                            tableString  = tableString + '<td>'+record[3]+'</td>';
-                            tableString  = tableString + '</tr>';
+                request.onload = function() {
+                    if (request.readyState === XMLHttpRequest.DONE) {
+                        if (request.status === 200) {
+                            console.log('Request successful. Status:', request.status);
+
+                            var queryResult = request.responseText;
+                            var lines = queryResult.split("\\n");
+                            var tableString = '';
+
+                            for (i = 0; i < lines.length - 1; i++) {
+                                var record = lines[i].split("\t");
+                                tableString += '<tr><td><a href="https://plants.ensembl.org/Multi/Search/Results?species=all;idx=;q=' + record[0] + ';site=ensemblunit" target="_blank">' + record[0] + '</a></td><td><a href="http://planttfdb.gao-lab.org/family.php?fam=' + record[1] + '" target="_blank">' + record[1] + '</a></td><td><a href="https://www.genome.jp/dbget-bin/www_bget?' + record[2] + '" target="_blank">' + record[2] + '</a></td><td>' + record[3] + '</td></tr>';
+                            }
+
+                            $('#tableEffectors').DataTable().clear();
+                            $('#tableEffectors').DataTable().destroy();
+                            document.getElementById('bodyTable').innerHTML = tableString;
+                            $('#tableEffectors').DataTable({"pageLength": 25});
+
+                            var namer = lines[lines.length - 1];
+                            document.getElementById('downloadQueryBtn').href = "tmp/" + namer + "_OutputQuery.txt";
+                            document.getElementById('downloadDiv').hidden = false;
+
+                            console.log('Table updated and download link set.');
+                        } else {
+                            console.error('Request failed with status:', request.status);
                         }
-
-                        $('#tableEffectors').DataTable().clear();
-                        $('#tableEffectors').DataTable().destroy();
-
-                        document.getElementById('bodyTable').innerHTML = tableString;
-
-                        $('#tableEffectors').DataTable({"pageLength": 25});
-
-                        var namer = lines[lines.length-1];
-                        document.getElementById('downloadQueryBtn').href = "tmp/" + namer + "_OutputQuery.txt";
-                        document.getElementById('downloadDiv').hidden = false;
-
                     }
-                }
-            };
-            request.send(formData);
+                };
 
-        });
+                request.onerror = function() {
+                    console.error('Request failed to complete.');
+                };
+
+                request.send(formData);
+                console.log('Request sent with FormData.');
+            });
 
         </script>
     </body>
