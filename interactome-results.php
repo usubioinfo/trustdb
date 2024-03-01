@@ -464,7 +464,7 @@ if($finished_bool && !($empty_results)){
         <script type="text/javascript">
             $(document).ready(function() {
 
-
+               /*
                 const email = document.getElementById('email-span').textContent;
 
                 const messageBody = window.location.href;
@@ -489,7 +489,7 @@ if($finished_bool && !($empty_results)){
                         console.log('Error');
                         console.log(err);
                     })
-
+                */
 
                 // Buttons examples
                 var table = $('#datatable-buttons').DataTable({
