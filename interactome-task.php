@@ -187,7 +187,7 @@ fwrite($netFile, $simpleJson);
 fclose($netFile);
 
 if($emailAddress != "noemail"){
-	$msgEmail = "Your Interactome search job at TRustDB is done! \nPlease go to https://kaabil.net/trustdb/interactome-results.php?result=$namer to see it.";
+	$msgEmail = "Your Interactome search job at TRustDB is done! \nPlease go to http://127.0.1.1:80/trustdb/interactome-results.php?result=$namer to see it.";
 	$msgEmail = wordwrap($msgEmail,70);
 	$from = "noreply@kaabil.net";
 	$headers = "From: $from"; 

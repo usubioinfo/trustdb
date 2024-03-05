@@ -57,7 +57,7 @@
 <div class="row w-100 pl-4">
 
   <div class="col">
-    <a class="" href="https://kaabil.net">
+    <a class="" href="http://127.0.1.1:80">
       <img src='assets/images/kaabil_logo.png' height="70" alt="">
     </a>
   </div>
@@ -236,7 +236,7 @@
 
             <!-- Footer -->
             <footer class="footer">
-                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="https://kaabil.net"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
+                © 2022 &nbsp|&nbsp <a  href="https://www.usu.edu"  target="_blank">Utah State University</a> &nbsp|&nbsp  <a href="http://127.0.1.1:80"  target="_blank">Kaundal Artificial Intelligence & Advanced Bioinformatics Laboratory</a> &nbsp|&nbsp <a href="https://www.psc.usu.edu"  target="_blank">Department of Plants, Soils, and Climate</a> &nbsp|&nbsp <a href="https://www.biosystems.usu.edu"  target="_blank">Center for Integrated BioSystems </a>
             </footer>
             <!-- End Footer -->
 
@@ -321,7 +321,7 @@
             formData.append("species", $('select#puccinia').val());
                 
             var request = new XMLHttpRequest();
-            request.open("POST", "https://kaabil.net/trustdb/queryPathogenLoc.php",true);
+            request.open("POST", "http://127.0.1.1:80/trustdb/queryPathogenLoc.php",true);
             request.onload = function () {
                 if (request.readyState === request.DONE) {
                     if (request.status === 200) {
