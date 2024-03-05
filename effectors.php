@@ -208,7 +208,7 @@
                             </div>
 
                             <div class="col-md-2" id="downloadDiv" hidden="true">
-                                <a id="downloadQueryBtn" href="" target="_blank" class="btn btn-purple waves-effect waves-light"download> Download Result <i class="fa fa-download" style="font-size: 20px"></i></a>
+                                <a id="downloadQueryBtn" href="tmp/{{ namer }}_OutputQuery.txt" target="_blank" class="btn btn-purple waves-effect waves-light" download>Download Result <i class="fa fa-download" style="font-size: 20px"></i></a>
                             </div>
 
                         </div>
@@ -331,7 +331,7 @@
             formData.append("species", $('select#puccinia').val());
                 
             var request = new XMLHttpRequest();
-            request.open("POST", "http://127.0.1.1:80/trustdb/queryEffectors.php",true);
+            request.open("POST", "queryEffProtein.php", true);
             request.onload = function () {
                 if (request.readyState === request.DONE) {
                     if (request.status === 200) {
