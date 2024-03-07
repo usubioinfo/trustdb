@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y r-base
 # Install R packages
 RUN R -e "install.packages('data.table', repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('RMySQL', repos='http://cran.rstudio.com/')"
+
 # Enable headers module
 RUN a2enmod headers
 
