@@ -26,8 +26,8 @@ list.databases <- strsplit(databases, "_")[[1]]
 ##i<-1
 for(i in 1:length(list.databases)){
   
-  speciesA.output <- fread(paste("/var/www/html/trustdbV1/Interolog/",speciesA, "_vs_", list.databases[i], ".txt", sep = ""))
-  speciesB.output <- fread(paste("/var/www/html/trustdbV1/Interolog/",speciesB, "_vs_", list.databases[i], ".txt", sep = ""))
+  speciesA.output <- fread(paste("/var/www/html/trustdb/Interolog/",speciesA, "_vs_", list.databases[i], ".txt", sep = ""))
+  speciesB.output <- fread(paste("/var/www/html/trustdb/Interolog/",speciesB, "_vs_", list.databases[i], ".txt", sep = ""))
   
   colnames.speciesA.output <- c("hostProtein", "interactor_A", "pident", "length", "mismatch", "gapopen", "qstart",
                                   "qend", "sstart", "send", "evalue", "bitscore", "qcovs")
@@ -76,6 +76,6 @@ for(i in 1:length(list.databases)){
   interolog$speciesA <- speciesA
   interolog$speciesB <- speciesB
   
-  output.filename <- paste("/var/www/html/trustdbV1/tmp/",speciesA,"vs",speciesB,"_",list.databases[i],"_ea",evalueSpeciesA,"_ia",identitySpeciesA,"_ca",coverageSpeciesA,"_eb",evalueSpeciesB,"_ib",identitySpeciesB,"_cb",coverageSpeciesB,".txt", sep = "")
+  output.filename <- paste("/var/www/html/trustdb/tmp/",speciesA,"vs",speciesB,"_",list.databases[i],"_ea",evalueSpeciesA,"_ia",identitySpeciesA,"_ca",coverageSpeciesA,"_eb",evalueSpeciesB,"_ib",identitySpeciesB,"_cb",coverageSpeciesB,".txt", sep = "")
   write.table(interolog, output.filename, sep = "\t", quote = FALSE, col.names = FALSE, row.names = FALSE)
 }
