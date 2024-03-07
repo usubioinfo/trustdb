@@ -9,6 +9,5 @@ config1.php
 orthologs
 weconet_try
 faSomeRecords
-Dockerfile
 trustdb_dump.sql
 start.sh
