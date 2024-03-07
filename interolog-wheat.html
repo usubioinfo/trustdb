@@ -779,7 +779,7 @@
                         if (request.readyState === request.DONE) {
                             if (request.status === 200) {
                                 resultTask = request.response;
-                                var resultUrl = "interactome-results.php?result=" + resultTask;
+                                var resultUrl = "https://kaabil.net/trustdb/interactome-results.php?result=" + resultTask;
                                 window.location.href = resultUrl;
                                 //console.log(request.responseText);
                             }
