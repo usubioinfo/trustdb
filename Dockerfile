@@ -66,8 +66,6 @@ COPY . /var/www/html/trustdb
 # Copy your specific database dump into the container
 COPY trustdb_dump.sql /docker-entrypoint-initdb.d/trustdb_dump.sql
 
-# RUN chown root:www-data -R /var/www/html/trustdb
-
 # Copy the custom start script to the container
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
