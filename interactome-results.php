@@ -508,7 +508,7 @@ if($finished_bool && !($empty_results)){
            
 
             $("#seeNetwork").click(function() {
-                var resultUrl = "http://127.0.1.1:80/trustdb/network-interactome.php?result=" + <?php  echo(json_encode($namer)); ?>;
+                var resultUrl = "network-interactome.php?result=" + <?php  echo(json_encode($namer)); ?>;
                 window.open(resultUrl);
             });
 

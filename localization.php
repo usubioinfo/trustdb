@@ -321,7 +321,7 @@
             formData.append("species", $('select#puccinia').val());
                 
             var request = new XMLHttpRequest();
-            request.open("POST", "http://127.0.1.1:80/trustdb/queryPathogenLoc.php",true);
+            request.open("POST", "queryPathogenLoc.php",true);
             request.onload = function () {
                 if (request.readyState === request.DONE) {
                     if (request.status === 200) {

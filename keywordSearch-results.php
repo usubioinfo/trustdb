@@ -201,7 +201,7 @@
                             }
                             //echo '<td>' . $speciesDictionary[$separatedLine[0]] . '</td>';
                             //echo '<td>' . $separatedLine[0] . '</td>';
-                            echo '<td class="sorting_1"><a href="http://127.0.1.1:80/trustdb/proteinSearchQuery.php?protein='.$separatedLine[3].'&species=' . $separatedLine[0] . '" target="_blank">'. $separatedLine[3] .'</a></td>';
+                            echo '<td class="sorting_1"><a href="proteinSearchQuery.php?protein='.$separatedLine[3].'&species=' . $separatedLine[0] . '" target="_blank">'. $separatedLine[3] .'</a></td>';
                             echo '<td>' . "<i>Pgt</i> Ug99" . '</td>';
                             // echo '<td>' . $separatedLine[1] . '</td>';
                             // echo '<td>' . $separatedLine[2] . '</td>';

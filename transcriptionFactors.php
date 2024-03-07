@@ -339,7 +339,7 @@
                 console.log('FormData prepared for request:', { namer: namer, species: $('select#triticumI').val() });
 
                 var request = new XMLHttpRequest();
-                request.open("POST", "http://127.0.1.1:80/trustdb/queryWheatTF.php", true);
+                request.open("POST", "queryWheatTF.php", true);
 
                 request.onload = function() {
                     if (request.readyState === XMLHttpRequest.DONE) {

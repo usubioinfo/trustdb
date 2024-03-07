@@ -770,16 +770,16 @@
                     
                     var validationRequest = new XMLHttpRequest();
                     var proceed = false;
-                    document.getElementById("interologSubmittionScreen").innerHTML= "You have succesfully submitted a query to the Host-pathogen Interactomics service at TRustDB. Your results will be avaliable at http://127.0.1.1:80/trustdb/interactome-results.php?result="+namer;
+                    document.getElementById("interologSubmittionScreen").innerHTML= "You have succesfully submitted a query to the Host-pathogen Interactomics service at TRustDB. Your results will be avaliable at interactome-results.php?result="+namer;
 
                     var request = new XMLHttpRequest();
-                    request.open("POST", "http://127.0.1.1:80/trustdb/interactome-task.php",true);
+                    request.open("POST", "interactome-task.php",true);
                     $('#onInterologTask').modal("show");
                     request.onload = function () {
                         if (request.readyState === request.DONE) {
                             if (request.status === 200) {
                                 resultTask = request.response;
-                                var resultUrl = "http://127.0.1.1:80/trustdb/interactome-results.php?result=" + resultTask;
+                                var resultUrl = "interactome-results.php?result=" + resultTask;
                                 window.location.href = resultUrl;
                                 //console.log(request.responseText);
                             }

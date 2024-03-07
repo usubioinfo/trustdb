@@ -437,13 +437,13 @@
                     // console.log(formData);
 
                     var request = new XMLHttpRequest();
-                    request.open("POST", "http://127.0.1.1:80/trustdb/keywordSearchQuery.php",true);
+                    request.open("POST", "keywordSearchQuery.php",true);
                     $('#onTask').modal("show");
                     request.onload = function () {
                         if (request.readyState === request.DONE) {
                             if (request.status === 200) {
                                 resultTask = request.response;
-                                var resultUrl = "http://127.0.1.1:80/trustdb/keywordSearch-results.php?result=" + resultTask;
+                                var resultUrl = "keywordSearch-results.php?result=" + resultTask;
                                 window.location.href = resultUrl;
                                 //console.log(request.responseText);
                             }

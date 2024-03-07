@@ -151,7 +151,7 @@ if ($queryResult = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	
 
 
-header("Location: http://127.0.1.1:80/trustdb/proteinSearch.php?protein=".$proteinAccesion."&species=".$speciesName);
+header("Location: proteinSearch.php?protein=".$proteinAccesion."&species=".$speciesName);
 
 
 ?>

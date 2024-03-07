@@ -658,14 +658,14 @@
 
                             
                             var request = new XMLHttpRequest();
-                            request.open("POST", "http://127.0.1.1:80/trustdb/blast-task.php",true);//TODO
+                            request.open("POST", "blast-task.php",true);//TODO
 
 
                             request.onload = function () {
                                 if (request.readyState === request.DONE) {
                                     if (request.status === 200) {
                                         console.log(request.response);
-                                        var resultUrl = "http://127.0.1.1:80/trustdb/blast-results.php?result=" + request.response;
+                                        var resultUrl = "blast-results.php?result=" + request.response;
                                         window.location.href = resultUrl;
                                         //console.log(request.responseText);
                                     }
@@ -676,7 +676,7 @@
                         }
 
                     
-                        //window.location.href = "http://127.0.1.1:80/trustdb/blast-results.php";
+                        //window.location.href = "blast-results.php";
                         
 
                     } else {
