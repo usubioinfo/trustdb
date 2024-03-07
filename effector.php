@@ -60,7 +60,7 @@
 <div class="row w-100 pl-4">
 
   <div class="col">
-    <a class="" href="http://127.0.1.1:80">
+    <a class="" href="http://kaabil.net/trustdb">
       <img src='assets/images/kaabil_logo.png' height="70" alt="">
     </a>
   </div>
