@@ -15,13 +15,13 @@ $blastType= $_POST['blastType'];
 
 $namer = microtime(true);
 
-$inFilename= '/var/www/html/trustdbV1/tmp/' . $namer . '_BlastInput.txt';
+$inFilename= '/var/www/html/trustdb/tmp/' . $namer . '_BlastInput.txt';
 #$inFilename= '/var/www/trustdbV1/tmp/' . microtime(true).'_BlastInput.txt';
-$outFilename= '/var/www/html/trustdbV1/tmp/' . $namer . '_BlastOutput.asn';
-$outFilenamePairwise= '/var/www/html/trustdbV1/tmp/' . $namer . '_BlastOutputPairwise.txt';
-$outFilenameTabular= '/var/www/html/trustdbV1/tmp/' . $namer . '_BlastOutputTabular.txt';
-$outFilenameAlignments= '/var/www/html/trustdbV1/tmp/' . $namer . '_BlastOutputAlignments.txt';
-$outInfoFilename= '/var/www/html/trustdbV1/tmp/' . $namer . '_TaskInfo.txt';
+$outFilename= '/var/www/html/trustdb/tmp/' . $namer . '_BlastOutput.asn';
+$outFilenamePairwise= '/var/www/html/trustdb/tmp/' . $namer . '_BlastOutputPairwise.txt';
+$outFilenameTabular= '/var/www/html/trustdb/tmp/' . $namer . '_BlastOutputTabular.txt';
+$outFilenameAlignments= '/var/www/html/trustdb/tmp/' . $namer . '_BlastOutputAlignments.txt';
+$outInfoFilename= '/var/www/html/trustdb/tmp/' . $namer . '_TaskInfo.txt';
 
 
 
